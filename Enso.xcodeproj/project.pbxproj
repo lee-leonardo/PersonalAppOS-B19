@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38890C641999861900147EDF /* BasePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38890C631999861900147EDF /* BasePageViewController.swift */; };
 		388BE3A419996B9900437E8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3A319996B9900437E8F /* AppDelegate.swift */; };
 		388BE3A619996B9900437E8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3A519996B9900437E8F /* ViewController.swift */; };
 		388BE3A919996B9900437E8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 388BE3A719996B9900437E8F /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 		388BE3C41999711E00437E8F /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3C31999711E00437E8F /* PreferenceViewController.swift */; };
 		388BE3C61999713D00437E8F /* HaikuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3C51999713D00437E8F /* HaikuViewController.swift */; };
 		388BE3C81999715A00437E8F /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3C71999715A00437E8F /* PhotoViewController.swift */; };
+		388BE3CA1999743500437E8F /* Haiku.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3C91999743500437E8F /* Haiku.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		38890C631999861900147EDF /* BasePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePageViewController.swift; sourceTree = "<group>"; };
 		388BE39E19996B9900437E8F /* Enso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Enso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		388BE3A219996B9900437E8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		388BE3A319996B9900437E8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +43,7 @@
 		388BE3C31999711E00437E8F /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
 		388BE3C51999713D00437E8F /* HaikuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HaikuViewController.swift; sourceTree = "<group>"; };
 		388BE3C71999715A00437E8F /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		388BE3C91999743500437E8F /* Haiku.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Haiku.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				388BE3A519996B9900437E8F /* ViewController.swift */,
+				38890C631999861900147EDF /* BasePageViewController.swift */,
 				388BE3C31999711E00437E8F /* PreferenceViewController.swift */,
 				388BE3C51999713D00437E8F /* HaikuViewController.swift */,
 				388BE3C71999715A00437E8F /* PhotoViewController.swift */,
@@ -130,6 +135,7 @@
 		388BE3C119996CCA00437E8F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				388BE3C91999743500437E8F /* Haiku.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -243,8 +249,10 @@
 			files = (
 				388BE3C41999711E00437E8F /* PreferenceViewController.swift in Sources */,
 				388BE3C61999713D00437E8F /* HaikuViewController.swift in Sources */,
+				38890C641999861900147EDF /* BasePageViewController.swift in Sources */,
 				388BE3A619996B9900437E8F /* ViewController.swift in Sources */,
 				388BE3A419996B9900437E8F /* AppDelegate.swift in Sources */,
+				388BE3CA1999743500437E8F /* Haiku.swift in Sources */,
 				388BE3C81999715A00437E8F /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
