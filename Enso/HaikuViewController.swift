@@ -8,10 +8,11 @@
 
 import UIKit
 
-class HaikuViewController: ViewController {
+class HaikuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		//println("Haiku View loaded")
     }
 
     override func didReceiveMemoryWarning() {

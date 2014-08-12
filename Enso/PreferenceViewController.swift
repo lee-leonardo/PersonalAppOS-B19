@@ -8,11 +8,12 @@
 
 import UIKit
 
-class PreferenceViewController: ViewController {
+class PreferenceViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		//println("Preference Loaded!")
+		
     }
 
     override func didReceiveMemoryWarning() {
