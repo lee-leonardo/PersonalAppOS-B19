@@ -18,6 +18,8 @@ class Haiku {
 	//Algorithm used here is attributed to Franklin Mark Liang of Stanford University
 	func countSyllables() -> Int {
 		
+		
+		
 		return 0
 	}
 }

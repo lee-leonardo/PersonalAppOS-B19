@@ -11,7 +11,7 @@
 		388BE3A919996B9900437E8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 388BE3A719996B9900437E8F /* Main.storyboard */; };
 		388BE3AB19996B9900437E8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 388BE3AA19996B9900437E8F /* Images.xcassets */; };
 		388BE3B719996B9900437E8F /* EnsoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3B619996B9900437E8F /* EnsoTests.swift */; };
-		388BE3C41999711E00437E8F /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3C31999711E00437E8F /* PreferenceViewController.swift */; };
+		388BE3C41999711E00437E8F /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3C31999711E00437E8F /* ShareViewController.swift */; };
 		388BE3C61999713D00437E8F /* HaikuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3C51999713D00437E8F /* HaikuViewController.swift */; };
 		388BE3C81999715A00437E8F /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3C71999715A00437E8F /* PhotoViewController.swift */; };
 		388BE3CA1999743500437E8F /* Haiku.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3C91999743500437E8F /* Haiku.swift */; };
@@ -21,7 +21,7 @@
 		38CBF020199A7DB1002652C4 /* Star.png in Resources */ = {isa = PBXBuildFile; fileRef = 38CBF01B199A7DB1002652C4 /* Star.png */; };
 		38CBF021199A7DB1002652C4 /* Triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 38CBF01C199A7DB1002652C4 /* Triangle.png */; };
 		38CBF023199A9414002652C4 /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBF022199A9414002652C4 /* PhotoController.swift */; };
-		38CBF026199A9CF2002652C4 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBF025199A9CF2002652C4 /* DataController.swift */; };
+		38CBF02A199AC041002652C4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBF029199AC041002652C4 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +43,7 @@
 		388BE3B019996B9900437E8F /* EnsoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EnsoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		388BE3B519996B9900437E8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		388BE3B619996B9900437E8F /* EnsoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnsoTests.swift; sourceTree = "<group>"; };
-		388BE3C31999711E00437E8F /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
+		388BE3C31999711E00437E8F /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		388BE3C51999713D00437E8F /* HaikuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HaikuViewController.swift; sourceTree = "<group>"; };
 		388BE3C71999715A00437E8F /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		388BE3C91999743500437E8F /* Haiku.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Haiku.swift; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 		38CBF01B199A7DB1002652C4 /* Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star.png; sourceTree = "<group>"; };
 		38CBF01C199A7DB1002652C4 /* Triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Triangle.png; sourceTree = "<group>"; };
 		38CBF022199A9414002652C4 /* PhotoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
-		38CBF025199A9CF2002652C4 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		38CBF029199AC041002652C4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,8 +134,8 @@
 		388BE3C019996CC400437E8F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				38CBF025199A9CF2002652C4 /* DataController.swift */,
-				388BE3C31999711E00437E8F /* PreferenceViewController.swift */,
+				38CBF029199AC041002652C4 /* MainViewController.swift */,
+				388BE3C31999711E00437E8F /* ShareViewController.swift */,
 				388BE3C51999713D00437E8F /* HaikuViewController.swift */,
 				38CBF024199A9418002652C4 /* Media Controllers */,
 			);
@@ -283,13 +283,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				388BE3C41999711E00437E8F /* PreferenceViewController.swift in Sources */,
+				388BE3C41999711E00437E8F /* ShareViewController.swift in Sources */,
 				388BE3C61999713D00437E8F /* HaikuViewController.swift in Sources */,
 				38CBF023199A9414002652C4 /* PhotoController.swift in Sources */,
 				388BE3A419996B9900437E8F /* AppDelegate.swift in Sources */,
-				38CBF026199A9CF2002652C4 /* DataController.swift in Sources */,
 				388BE3CA1999743500437E8F /* Haiku.swift in Sources */,
 				388BE3C81999715A00437E8F /* PhotoViewController.swift in Sources */,
+				38CBF02A199AC041002652C4 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

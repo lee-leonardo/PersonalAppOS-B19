@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BM0-YQ-POm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="K90-S6-NAD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
     </dependencies>
     <scenes>
-        <!--Preference-->
+        <!--Share-->
         <scene sceneID="rcd-Aq-6kE">
             <objects>
-                <viewController storyboardIdentifier="SharePreferences" title="Preference" id="5Qx-do-0IL" customClass="PreferenceViewController" customModule="Enso" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Share" title="Share" id="5Qx-do-0IL" customClass="ShareViewController" customModule="Enso" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iad-E1-u9n"/>
                         <viewControllerLayoutGuide type="bottom" id="Va0-MY-Ro4"/>
@@ -16,34 +16,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LOf-Ec-Kac">
-                                <rect key="frame" x="276" y="474" width="51" height="31"/>
-                            </switch>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1i-Dg-eHw">
-                                <rect key="frame" x="280" y="513" width="40" height="30"/>
-                                <state key="normal" title="Share">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nwH-ow-rtX">
+                                <rect key="frame" x="277" y="209" width="46" height="30"/>
+                                <state key="normal" title="Twitter">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="twitterButton:" destination="5Qx-do-0IL" eventType="touchUpInside" id="dva-oO-Y7D"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Share" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTp-Yw-67l">
+                                <rect key="frame" x="278" y="72" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="a1i-Dg-eHw" firstAttribute="top" secondItem="LOf-Ec-Kac" secondAttribute="bottom" constant="8" id="bOK-ta-wse"/>
-                            <constraint firstAttribute="centerX" secondItem="a1i-Dg-eHw" secondAttribute="centerX" id="j0F-6s-vEg"/>
-                            <constraint firstAttribute="centerX" secondItem="LOf-Ec-Kac" secondAttribute="centerX" id="vR7-mj-tv1"/>
-                            <constraint firstItem="Va0-MY-Ro4" firstAttribute="top" secondItem="a1i-Dg-eHw" secondAttribute="bottom" constant="8" id="zHs-Vd-TDG"/>
+                            <constraint firstItem="sTp-Yw-67l" firstAttribute="top" secondItem="iad-E1-u9n" secondAttribute="bottom" constant="30" id="F7s-WV-FBf"/>
+                            <constraint firstAttribute="centerX" secondItem="nwH-ow-rtX" secondAttribute="centerX" id="bLX-gm-fus"/>
+                            <constraint firstAttribute="centerX" secondItem="sTp-Yw-67l" secondAttribute="centerX" id="wdp-IJ-Kgm"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Share" id="wQD-d3-VJy"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h4i-Ay-5jJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1204" y="2056"/>
+            <point key="canvasLocation" x="2980" y="1342"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="tHO-NI-KY4">
+            <objects>
+                <viewController id="K90-S6-NAD" customClass="MainViewController" customModule="Enso" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ec3-6R-hQp"/>
+                        <viewControllerLayoutGuide type="bottom" id="7b5-vv-64v"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pjw-Ps-Ltx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pYg-xK-gLN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1588" y="612"/>
         </scene>
         <!--Write-->
         <scene sceneID="1Bh-oX-vQm">
             <objects>
-                <viewController storyboardIdentifier="HaikuController" title="Write" id="Dow-OY-efy" customClass="HaikuViewController" customModule="Enso" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Write" title="Write" id="Dow-OY-efy" customClass="HaikuViewController" customModule="Enso" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="r1d-tC-xY7"/>
                         <viewControllerLayoutGuide type="bottom" id="Y0f-j3-5SJ"/>
@@ -52,20 +75,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CdR-HT-bK8">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="The old pond: a frog jumps in, the sound of water." translatesAutoresizingMaskIntoConstraints="NO" id="CdR-HT-bK8">
                                 <rect key="frame" x="150" y="150" width="300" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="fG0-Zw-4Lv"/>
                                     <constraint firstAttribute="width" constant="300" id="srr-ef-Jth"/>
                                 </constraints>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3q-eW-mLt">
-                                <rect key="frame" x="269" y="506" width="62" height="21"/>
+                                <rect key="frame" x="269" y="555" width="62" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Write" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ie-Jc-bSR">
+                                <rect key="frame" x="279" y="91" width="59" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -74,20 +102,22 @@
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="CdR-HT-bK8" secondAttribute="centerX" id="JsH-aW-2aq"/>
                             <constraint firstItem="Y0f-j3-5SJ" firstAttribute="top" secondItem="O3q-eW-mLt" secondAttribute="bottom" constant="24" id="LHt-NE-w0S"/>
+                            <constraint firstItem="2ie-Jc-bSR" firstAttribute="top" secondItem="r1d-tC-xY7" secondAttribute="bottom" constant="30" id="b3Y-eh-3iV"/>
                             <constraint firstAttribute="centerX" secondItem="O3q-eW-mLt" secondAttribute="centerX" id="bIC-Fv-Cgf"/>
                             <constraint firstAttribute="centerY" secondItem="CdR-HT-bK8" secondAttribute="centerY" id="t7u-wC-7Gy"/>
+                            <constraint firstAttribute="centerX" secondItem="2ie-Jc-bSR" secondAttribute="centerX" id="tSJ-73-oJe"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Write" id="LVD-IP-vxZ"/>
+                    <navigationItem key="navigationItem" id="h16-oG-4v1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="izg-U7-QrN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1204" y="1310"/>
+            <point key="canvasLocation" x="1588" y="1342"/>
         </scene>
         <!--Photo-->
         <scene sceneID="Xz6-Mq-4bH">
             <objects>
-                <viewController storyboardIdentifier="PhotoController" title="Photo" id="1Va-sO-eac" customClass="PhotoViewController" customModule="Enso" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Photo" title="Photo" id="1Va-sO-eac" customClass="PhotoViewController" customModule="Enso" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bHn-aw-chU"/>
                         <viewControllerLayoutGuide type="bottom" id="Sb8-BC-qfI"/>
@@ -96,7 +126,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjs-In-rhJ">
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xjs-In-rhJ">
                                 <rect key="frame" x="0.0" y="389" width="600" height="162"/>
                                 <connections>
                                     <outlet property="dataSource" destination="1Va-sO-eac" id="2Gy-ek-HZe"/>
@@ -104,8 +134,14 @@
                                 </connections>
                             </pickerView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MM9-fb-6UO">
-                                <rect key="frame" x="150" y="28" width="300" height="300"/>
+                                <rect key="frame" x="150" y="81" width="300" height="300"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Capture" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVh-6j-Qff">
+                                <rect key="frame" x="255" y="41" width="91" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -114,6 +150,8 @@
                             <constraint firstAttribute="trailing" secondItem="xjs-In-rhJ" secondAttribute="trailing" id="NgD-II-cu5"/>
                             <constraint firstItem="Sb8-BC-qfI" firstAttribute="top" secondItem="xjs-In-rhJ" secondAttribute="bottom" id="PhD-PC-4lD"/>
                             <constraint firstItem="MM9-fb-6UO" firstAttribute="top" secondItem="bHn-aw-chU" secondAttribute="bottom" constant="8" id="Qe9-ht-HXm"/>
+                            <constraint firstItem="ZVh-6j-Qff" firstAttribute="top" secondItem="bHn-aw-chU" secondAttribute="bottom" constant="30" id="a8f-aq-r0m"/>
+                            <constraint firstAttribute="centerX" secondItem="ZVh-6j-Qff" secondAttribute="centerX" id="wpP-7S-i92"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Capture" id="1Xh-kW-BnC"/>
@@ -124,27 +162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wSO-FE-Hoa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="448" y="2750"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="urJ-LM-nu4">
-            <objects>
-                <tabBarController id="BM0-YQ-POm" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="T2a-NH-qLq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="Dow-OY-efy" kind="relationship" relationship="viewControllers" id="mya-ZP-zZx"/>
-                        <segue destination="1Va-sO-eac" kind="relationship" relationship="viewControllers" id="33m-Sb-Dlm"/>
-                        <segue destination="5Qx-do-0IL" kind="relationship" relationship="viewControllers" id="deS-To-hIm"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zfo-ZO-gaO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="448" y="1310"/>
+            <point key="canvasLocation" x="2308" y="1342"/>
         </scene>
     </scenes>
 </document>
