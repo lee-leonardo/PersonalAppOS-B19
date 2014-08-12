@@ -75,14 +75,6 @@
             </objects>
             <point key="canvasLocation" x="181" y="450"/>
         </scene>
-        <!--Page View Controller-->
-        <scene sceneID="hnQ-e8-UjY">
-            <objects>
-                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="CYF-tk-twT" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2M4-VG-Ihc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="796" y="-196"/>
-        </scene>
         <!--Haiku View Controller-->
         <scene sceneID="1Bh-oX-vQm">
             <objects>
