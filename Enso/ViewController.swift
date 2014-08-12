@@ -8,18 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITabBarControllerDelegate {
 	
 //Variables?
 	//PHAsset
-	//
 
-	
 //MARK: UIPageViewController - Variables
-	var preferenceController = PreferenceViewController()
-	var haikuController = HaikuViewController()
-	var photoController = PhotoViewController()
+//	var preferenceController = PreferenceViewController()
+//	var haikuController = HaikuViewController()
+//	var photoController = PhotoViewController()
 	
+//MARK: 
 	
 	
 //MARK: View methods
@@ -33,7 +32,5 @@ class ViewController: UIViewController {
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 	}
-
-
 }
 

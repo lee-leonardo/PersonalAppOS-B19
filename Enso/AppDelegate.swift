@@ -12,13 +12,30 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
 	var window: UIWindow?
+	var tabBarController = UITabBarController()
 
 
 	func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
-		var pageControl = UIPageControl.appearance()
-		pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
-		pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
-		pageControl.backgroundColor = UIColor.whiteColor()
+		
+		var preferenceTab = PreferenceViewController()
+		var haikuTab = HaikuViewController()
+		var photoTab = PhotoViewController()
+		
+		var circle = UIImage(named: "Circle")
+		var square = UIImage(named: "Square")
+		var star = UIImage(named: "Star")
+		
+		var controllers = NSArray(objects: haikuTab, photoTab, preferenceTab)
+		
+		var tabBarButton1 = UITabBarItem(title: "Preferences", image: circle, tag: 0)
+		var tabBarButton2 = UITabBarItem(title: "Haiku", image: square, tag: 1)
+		var tabBarButton3 = UITabBarItem(title: "Photo", image: star, tag: 2)
+		
+		tabBarController.viewControllers = controllers
+		
+		
+		
+		window?.rootViewController = tabBarController
 		
 		return true
 	}

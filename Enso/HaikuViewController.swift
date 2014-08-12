@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HaikuViewController: BasePageViewController {
+class HaikuViewController: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

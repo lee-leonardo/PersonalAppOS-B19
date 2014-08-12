@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PreferenceViewController: BasePageViewController {
+class PreferenceViewController: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
