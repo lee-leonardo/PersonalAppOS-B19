@@ -92,12 +92,6 @@ class PhotoController {
 					
 				}
 			})
-			
-			
-			
-			
-			
-			
 		})
 		
 	}

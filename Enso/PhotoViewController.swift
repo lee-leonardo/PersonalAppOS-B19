@@ -9,55 +9,83 @@
 import UIKit
 import Photos
 
+protocol PhotoDelegate {
+	func photoSelected(selectedImage: UIImage)
+}
+
 class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 	
+	
+	/*
+	
+	Make a collectionView, there's not something out of the box yet.
+	
+	CI Funhouse play around with it
+	
+	Checkout the sample code CIFunhouse for iPhone (iOS).
+	
+	Notification by full screen width. -> Content offset.
+	
+		Do the content offset make it relative.
+		Navigation controller without a bar is a good idea.
+	
+	Timeout interval:
+		Make a class for a call out controller.
+		Give it class methods to show callout with m
+	
+	
+	*/
 	
 	@IBOutlet weak var selectedImageView: UIImageView!
 	@IBOutlet weak var filterPickerView: UIPickerView!
 	var photoPicker = UIImagePickerController()
+	var photoActionController = UIAlertController()
 	var selectedImage : UIImage?
+	var delegate : PhotoDelegate?
+	var filters = ["Sepia Tone", "Faded Photo"]
 	
-	
+//MARK: 
 	func selectPhoto(sender: AnyObject) {
-		println("Long pressed")
+		//println("Long pressed")
 		
 		if let longPress = sender as? UILongPressGestureRecognizer {
 			switch longPress.state {
 			case UIGestureRecognizerState.Began:
-				println("began")
-				
-				var chooseAction = UIAlertController(title: "Get photo from", message: "Please choose a place to get a photo from", preferredStyle: UIAlertControllerStyle.ActionSheet)
-				var selectPhoto = UIAlertAction(title: "Photo Library", style: UIAlertActionStyle.Default, handler: {
-					(action: UIAlertAction!) -> Void in
-					self.presentViewController(self.photoPicker, animated: true, completion: nil)
-				})
-				var cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
-				chooseAction.addAction(selectPhoto)
-				chooseAction.addAction(cancel)
-				
-				self.presentViewController(chooseAction, animated: true, completion: nil)
-				
-				
-				
+				//println("began")
+				if self.photoActionController.popoverPresentationController != nil {
+					self.photoActionController.popoverPresentationController.sourceRect = CGRect(x: 0, y: self.selectedImageView.frame.height, width: 0, height: 0)
+					self.photoActionController.popoverPresentationController.sourceView = self.selectedImageView
+				}
+				self.presentViewController(self.photoActionController, animated: true, completion: nil)
 			case UIGestureRecognizerState.Ended:
 				println("ended")
 			default:
 				println("something else=")
 			}
 		}
+	}
+	func buildActionSheet() -> UIAlertController {
+		var chooseActionSheet = UIAlertController(title: "Get photo from", message: "Please choose a place to get a photo from", preferredStyle: UIAlertControllerStyle.ActionSheet)
+		var selectPhoto = UIAlertAction(title: "Photo Library", style: UIAlertActionStyle.Default, handler: {
+			(action: UIAlertAction!) -> Void in
+			self.presentViewController(self.photoPicker, animated: true, completion: nil)
+		})
+		var cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+		chooseActionSheet.addAction(selectPhoto)
+		chooseActionSheet.addAction(cancel)
 		
-//		self.checkAuthentication({ (status) -> Void in
-//			if status == PHAuthorizationStatus.Authorized {
-//				NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-//					self.presentViewController(self.photoPicker, animated: true, completion: nil)
-//				})
-//			}
-//		})
+		return chooseActionSheet
+		
+		
 	}
 	
 //MARK: View methods
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		self.view.backgroundColor = UIColor(hue: 120 / 360 , saturation: 0.5, brightness: 1, alpha: 0.2)
+
+		
 		//println("Photo controller loaded.")
 		self.selectedImageView.layer.borderWidth = 1.0
 		self.selectedImageView.layer.borderColor = UIColor.lightGrayColor().CGColor
@@ -72,12 +100,18 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 		//longPress.minimumPressDuration = 1.5
 		selectedImageView.addGestureRecognizer(longPress)
 		
+		self.photoActionController = buildActionSheet()
+		
+		
     }
 	override func viewWillAppear(animated: Bool) {
 		if selectedImage != nil {
-			println("Image exists!")
+//			println("Image exists!")
 			self.selectedImageView.image = selectedImage
 		}
+		
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "imageViewChanged:", name: UITextViewTextDidChangeNotification, object: nil)
+
 	}
 	
 //MARK: UIPickerViewDelegate
@@ -92,11 +126,14 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 			
 		}
 		
-		
 		return NSAttributedString(string: "String")
 	}
 	func pickerView(pickerView: UIPickerView!, titleForRow row: Int, forComponent component: Int) -> String! {
 		return "test"
+	}
+	
+	func pickerView(pickerView: UIPickerView!, didSelectRow row: Int, inComponent component: Int) {
+		println("selected filter: \(self.filters[row])")
 	}
 	
 //MARK: UIPickerViewDataSource
@@ -105,7 +142,7 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 		return 1
 	}
 	func pickerView(pickerView: UIPickerView!, numberOfRowsInComponent component: Int) -> Int {
-		return 11
+		return self.filters.count
 	}
 	
 //MARK: PHPhotoLibrary
@@ -131,6 +168,8 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 			//Add PhotoController awesomeness in here.
 			NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
 				self.selectedImageView.image = self.selectedImage
+				NSNotificationCenter.defaultCenter().postNotificationName("imageViewChanged:", object: self.selectedImage)
+//				self.delegate!.photoSelected(self.selectedImage!)
 			})
 		})
 	}
@@ -145,18 +184,9 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         super.didReceiveMemoryWarning()
     }
 	
-//MARK: Touch methods
-//	override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
-//		super.touchesBegan(touches, withEvent: event)
-//		
-//		if touches.count >= 1 {
-//			println("At least 1 touch!")
-//		}
-//	}
-	
-//MARK: UIGestureRecognizer
-//	func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer!) -> Bool {
-//		super.touchesBegan(<#touches: NSSet!#>, withEvent: <#UIEvent!#>)
-//		gestureRecognizer.numberOfTouches()
-//	}
+//MARK: NSNotificationCenter
+	func imageViewChanged(sender: AnyObject!) {
+		println("This works!")
+		self.delegate?.photoSelected(selectedImage!)
+	}
 }

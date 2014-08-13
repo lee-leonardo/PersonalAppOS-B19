@@ -18,13 +18,24 @@ class HaikuViewController: UIViewController, UITextViewDelegate {
 	@IBOutlet weak var syllableCount: UILabel!
 	var delegate : HaikuDelegate?
 	
+	
+	
 	func randomStartHaiku() -> String {
 		var random = arc4random_uniform(10)
-		
 		return "The old pond:\na frog jumps in,\nthe sound of water"
 	}
 	
 //MARK: View methods
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		self.view.backgroundColor = UIColor(hue: 0, saturation: 0.5, brightness: 1, alpha: 0.1)
+		self.haikuTextView.backgroundColor = UIColor(hue: 0, saturation: 0.15, brightness: 0.7, alpha: 0.2)
+
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "textViewChanged:", name: UITextViewTextDidChangeNotification, object: nil)
+		
+		
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		//println("Haiku View loaded")
@@ -33,10 +44,7 @@ class HaikuViewController: UIViewController, UITextViewDelegate {
 		haikuTextView.resignFirstResponder()
     }
 	override func viewWillDisappear(animated: Bool) {
-		self.parentViewController
-
-		
-//		haikuTextView.text
+		self.delegate!.haikuTextChanged(haikuTextView.text)
 	}
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -58,14 +66,12 @@ class HaikuViewController: UIViewController, UITextViewDelegate {
 			}
 		}
 	}
-//MARK: TextFieldDelegate
-	func textViewDidBeginEditing(textView: UITextView!) {
-		println("Did begin editing")
+//MARK: TextViewDelegate	
+	func textViewChanged(sender: AnyObject!) {
+		self.delegate?.haikuTextChanged(haikuTextView.text)
 	}
-	func textViewDidEndEditing(textView: UITextView!) {
-		println("Text View did End editing")
-		self.delegate!.haikuTextChanged(haikuTextView.text)
-	}
+	
+	
 	
 //MARK: Delay method
 	//This'll provide functionality that will count the haiku's string values.
