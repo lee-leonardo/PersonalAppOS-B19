@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, HaikuDelegate {
 	
 	var scrollView  : UIScrollView!
 	var haiku : Haiku?
@@ -17,7 +17,14 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
 
 		self.scrollView = UIScrollView(frame: self.view.frame)
+		makeMainScrollView()
 		
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+	
+	func makeMainScrollView() {
 		var totalWidth = self.view.frame.width * 3
 		var totalHeight = self.view.frame.height
 		self.scrollView.contentSize = CGSize(width: totalWidth, height: totalHeight)
@@ -27,6 +34,8 @@ class MainViewController: UIViewController {
 		var haikuController = self.storyboard.instantiateViewControllerWithIdentifier("Write") as HaikuViewController
 		var photoController = self.storyboard.instantiateViewControllerWithIdentifier("Photo") as PhotoViewController
 		var shareController = self.storyboard.instantiateViewControllerWithIdentifier("Share") as ShareViewController
+		
+		haikuController.delegate = self
 		
 		var firstX = 0
 		var secondX = Int(self.view.frame.width)
@@ -49,10 +58,12 @@ class MainViewController: UIViewController {
 		haikuController.didMoveToParentViewController(self)
 		photoController.didMoveToParentViewController(self)
 		shareController.didMoveToParentViewController(self)
-		
-		
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+	}
+	
+	func haikuTextChanged(haikuText: String) {
+		self.haiku = Haiku(haiku: haikuText)
+		println("Haiku text")
+		println("\(self.haiku?.lines)")
+	}
+	
 }

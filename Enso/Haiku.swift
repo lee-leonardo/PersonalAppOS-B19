@@ -9,10 +9,10 @@
 import Foundation
 
 class Haiku {
-	var text : String
+	var lines : String
 	
 	init(haiku text: String) {
-		self.text = text
+		self.lines = text
 	}
 	
 	//Algorithm used here is attributed to Franklin Mark Liang of Stanford University

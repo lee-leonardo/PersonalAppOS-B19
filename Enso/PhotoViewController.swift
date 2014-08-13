@@ -18,16 +18,41 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 	var selectedImage : UIImage?
 	
 	
-	@IBAction func selectPhoto(sender: AnyObject) {
+	func selectPhoto(sender: AnyObject) {
 		println("Long pressed")
 		
-		self.checkAuthentication({ (status) -> Void in
-			if status == PHAuthorizationStatus.Authorized {
-				NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+		if let longPress = sender as? UILongPressGestureRecognizer {
+			switch longPress.state {
+			case UIGestureRecognizerState.Began:
+				println("began")
+				
+				var chooseAction = UIAlertController(title: "Get photo from", message: "Please choose a place to get a photo from", preferredStyle: UIAlertControllerStyle.ActionSheet)
+				var selectPhoto = UIAlertAction(title: "Photo Library", style: UIAlertActionStyle.Default, handler: {
+					(action: UIAlertAction!) -> Void in
 					self.presentViewController(self.photoPicker, animated: true, completion: nil)
 				})
+				var cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+				chooseAction.addAction(selectPhoto)
+				chooseAction.addAction(cancel)
+				
+				self.presentViewController(chooseAction, animated: true, completion: nil)
+				
+				
+				
+			case UIGestureRecognizerState.Ended:
+				println("ended")
+			default:
+				println("something else=")
 			}
-		})
+		}
+		
+//		self.checkAuthentication({ (status) -> Void in
+//			if status == PHAuthorizationStatus.Authorized {
+//				NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+//					self.presentViewController(self.photoPicker, animated: true, completion: nil)
+//				})
+//			}
+//		})
 	}
 	
 //MARK: View methods
@@ -36,12 +61,16 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 		//println("Photo controller loaded.")
 		self.selectedImageView.layer.borderWidth = 1.0
 		self.selectedImageView.layer.borderColor = UIColor.lightGrayColor().CGColor
-		self.selectedImageView.layer.cornerRadius = self.selectedImageView.frame.width * 0.25
+		self.selectedImageView.layer.cornerRadius = self.selectedImageView.frame.width * (3.0/10.0)
 		self.selectedImageView.layer.masksToBounds = true
 		
 		self.photoPicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
 		self.photoPicker.allowsEditing = true
 		self.photoPicker.delegate = self
+		
+		var longPress = UILongPressGestureRecognizer(target: self, action: "selectPhoto:")
+		//longPress.minimumPressDuration = 1.5
+		selectedImageView.addGestureRecognizer(longPress)
 		
     }
 	override func viewWillAppear(animated: Bool) {
@@ -58,25 +87,10 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 			if component == 0 {
 				return NSAttributedString(string: "Filters")
 			}
-//			if component == 1 {
-//				return NSAttributedString(string: "Intensity")
-//			}
-//			if component == 2 {
-//				return NSAttributedString(string: "Value")
-//			}
 		}
-
-//		if component == 2 {
-//			return NSAttributedString(string: String(row))
-//		}
-//		
-//		if row % 5 == 0 {
-//			return NSAttributedString(string: "End")
-//		}
-//
-//		if row % 2 == 0 {
-//			return NSAttributedString(string: "Awesome")
-//		}
+		if row != 0 {
+			
+		}
 		
 		
 		return NSAttributedString(string: "String")
@@ -132,13 +146,13 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
 	
 //MARK: Touch methods
-	override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
-		super.touchesBegan(touches, withEvent: event)
-		
-		if touches.count >= 1 {
-			println("At least 1 touch!")
-		}
-	}
+//	override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+//		super.touchesBegan(touches, withEvent: event)
+//		
+//		if touches.count >= 1 {
+//			println("At least 1 touch!")
+//		}
+//	}
 	
 //MARK: UIGestureRecognizer
 //	func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer!) -> Bool {

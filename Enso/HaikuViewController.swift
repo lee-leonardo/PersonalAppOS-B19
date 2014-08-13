@@ -8,10 +8,15 @@
 
 import UIKit
 
-class HaikuViewController: UIViewController, UITextFieldDelegate {
+protocol HaikuDelegate {
+	func haikuTextChanged(haikuText : String)
+}
+
+class HaikuViewController: UIViewController, UITextViewDelegate {
 
 	@IBOutlet weak var haikuTextView: UITextView!
 	@IBOutlet weak var syllableCount: UILabel!
+	var delegate : HaikuDelegate?
 	
 	func randomStartHaiku() -> String {
 		var random = arc4random_uniform(10)
@@ -28,6 +33,9 @@ class HaikuViewController: UIViewController, UITextFieldDelegate {
 		haikuTextView.resignFirstResponder()
     }
 	override func viewWillDisappear(animated: Bool) {
+		self.parentViewController
+
+		
 //		haikuTextView.text
 	}
     override func didReceiveMemoryWarning() {
@@ -49,6 +57,14 @@ class HaikuViewController: UIViewController, UITextFieldDelegate {
 				individualControl.resignFirstResponder()
 			}
 		}
+	}
+//MARK: TextFieldDelegate
+	func textViewDidBeginEditing(textView: UITextView!) {
+		println("Did begin editing")
+	}
+	func textViewDidEndEditing(textView: UITextView!) {
+		println("Text View did End editing")
+		self.delegate!.haikuTextChanged(haikuTextView.text)
 	}
 	
 //MARK: Delay method

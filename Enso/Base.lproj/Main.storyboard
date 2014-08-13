@@ -115,18 +115,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="The old pond: a frog jumps in, the sound of water" translatesAutoresizingMaskIntoConstraints="NO" id="CdR-HT-bK8">
-                                <rect key="frame" x="150" y="100" width="300" height="400"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="fG0-Zw-4Lv"/>
-                                    <constraint firstAttribute="width" constant="300" id="srr-ef-Jth"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
-                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3q-eW-mLt">
-                                <rect key="frame" x="269" y="555" width="62" height="21"/>
+                                <rect key="frame" x="269" y="364" width="62" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -137,16 +127,39 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="The old pond: a frog jumps in, the sound of water" translatesAutoresizingMaskIntoConstraints="NO" id="CdR-HT-bK8">
+                                <rect key="frame" x="150" y="106" width="300" height="250"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="fG0-Zw-4Lv"/>
+                                    <constraint firstAttribute="width" constant="300" id="srr-ef-Jth"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Dow-OY-efy" id="wTa-kU-TVM"/>
+                                </connections>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="CdR-HT-bK8" firstAttribute="top" secondItem="2ie-Jc-bSR" secondAttribute="bottom" constant="24" id="EQI-UC-EiB"/>
+                            <constraint firstAttribute="centerX" secondItem="CdR-HT-bK8" secondAttribute="centerX" id="EW5-tE-fPK"/>
                             <constraint firstAttribute="centerX" secondItem="CdR-HT-bK8" secondAttribute="centerX" id="JsH-aW-2aq"/>
                             <constraint firstItem="Y0f-j3-5SJ" firstAttribute="top" secondItem="O3q-eW-mLt" secondAttribute="bottom" constant="24" id="LHt-NE-w0S"/>
                             <constraint firstItem="2ie-Jc-bSR" firstAttribute="top" secondItem="r1d-tC-xY7" secondAttribute="bottom" constant="30" id="b3Y-eh-3iV"/>
                             <constraint firstAttribute="centerX" secondItem="O3q-eW-mLt" secondAttribute="centerX" id="bIC-Fv-Cgf"/>
                             <constraint firstAttribute="centerY" secondItem="CdR-HT-bK8" secondAttribute="centerY" id="t7u-wC-7Gy"/>
                             <constraint firstAttribute="centerX" secondItem="2ie-Jc-bSR" secondAttribute="centerX" id="tSJ-73-oJe"/>
+                            <constraint firstItem="O3q-eW-mLt" firstAttribute="top" secondItem="CdR-HT-bK8" secondAttribute="bottom" constant="8" id="vBI-vQ-vgu"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="JsH-aW-2aq"/>
+                                <exclude reference="t7u-wC-7Gy"/>
+                                <exclude reference="LHt-NE-w0S"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="h16-oG-4v1"/>
                     <connections>
@@ -177,6 +190,14 @@
                                     <outlet property="delegate" destination="1Va-sO-eac" id="hk5-4q-9cs"/>
                                 </connections>
                             </pickerView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MM9-fb-6UO">
+                                <rect key="frame" x="180" y="106" width="240" height="240"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="DCe-z5-0zI"/>
+                                    <constraint firstAttribute="height" constant="240" id="Wdb-Cc-lqI"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capture" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVh-6j-Qff">
                                 <rect key="frame" x="255" y="50" width="91" height="32"/>
                                 <gestureRecognizers/>
@@ -184,17 +205,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MM9-fb-6UO">
-                                <rect key="frame" x="180" y="90" width="240" height="240"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="DCe-z5-0zI"/>
-                                    <constraint firstAttribute="height" constant="240" id="Wdb-Cc-lqI"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="wlX-ZJ-Rov" appends="YES" id="GQz-2O-CY7"/>
-                                </connections>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -203,7 +213,7 @@
                             <constraint firstAttribute="centerX" secondItem="MM9-fb-6UO" secondAttribute="centerX" id="OKM-CL-IzW"/>
                             <constraint firstItem="Sb8-BC-qfI" firstAttribute="top" secondItem="xjs-In-rhJ" secondAttribute="bottom" id="PhD-PC-4lD"/>
                             <constraint firstItem="ZVh-6j-Qff" firstAttribute="top" secondItem="bHn-aw-chU" secondAttribute="bottom" constant="30" id="a8f-aq-r0m"/>
-                            <constraint firstItem="MM9-fb-6UO" firstAttribute="top" secondItem="ZVh-6j-Qff" secondAttribute="bottom" constant="8" id="nUr-O2-8SU"/>
+                            <constraint firstItem="MM9-fb-6UO" firstAttribute="top" secondItem="ZVh-6j-Qff" secondAttribute="bottom" constant="24" id="nUr-O2-8SU"/>
                             <constraint firstAttribute="centerX" secondItem="ZVh-6j-Qff" secondAttribute="centerX" id="wpP-7S-i92"/>
                         </constraints>
                     </view>
@@ -214,12 +224,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wSO-FE-Hoa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="wlX-ZJ-Rov">
-                    <connections>
-                        <action selector="selectPhoto:" destination="1Va-sO-eac" id="Qul-Iu-SwM"/>
-                        <outlet property="delegate" destination="1Va-sO-eac" id="Gkr-W9-HLO"/>
-                    </connections>
-                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2308" y="1342"/>
         </scene>
