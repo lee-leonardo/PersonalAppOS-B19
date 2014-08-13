@@ -7,12 +7,28 @@
 //
 
 import UIKit
+import Photos
 
-class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 	
 	
 	@IBOutlet weak var selectedImageView: UIImageView!
 	@IBOutlet weak var filterPickerView: UIPickerView!
+	var photoPicker = UIImagePickerController()
+	var selectedImage : UIImage?
+	
+	
+	@IBAction func selectPhoto(sender: AnyObject) {
+		println("Long pressed")
+		
+		self.checkAuthentication({ (status) -> Void in
+			if status == PHAuthorizationStatus.Authorized {
+				NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+					self.presentViewController(self.photoPicker, animated: true, completion: nil)
+				})
+			}
+		})
+	}
 	
 //MARK: View methods
     override func viewDidLoad() {
@@ -23,7 +39,17 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 		self.selectedImageView.layer.cornerRadius = self.selectedImageView.frame.width * 0.25
 		self.selectedImageView.layer.masksToBounds = true
 		
+		self.photoPicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+		self.photoPicker.allowsEditing = true
+		self.photoPicker.delegate = self
+		
     }
+	override func viewWillAppear(animated: Bool) {
+		if selectedImage != nil {
+			println("Image exists!")
+			self.selectedImageView.image = selectedImage
+		}
+	}
 	
 //MARK: UIPickerViewDelegate
 	func pickerView(pickerView: UIPickerView!, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString! {
@@ -55,11 +81,9 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 		
 		return NSAttributedString(string: "String")
 	}
-	
 	func pickerView(pickerView: UIPickerView!, titleForRow row: Int, forComponent component: Int) -> String! {
 		return "test"
 	}
-	
 	
 //MARK: UIPickerViewDataSource
 	func numberOfComponentsInPickerView(pickerView: UIPickerView!) -> Int {
@@ -69,7 +93,33 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 	func pickerView(pickerView: UIPickerView!, numberOfRowsInComponent component: Int) -> Int {
 		return 11
 	}
-
+	
+//MARK: PHPhotoLibrary
+	func checkAuthentication(completionHandler: (PHAuthorizationStatus) -> Void) -> Void {
+		switch PHPhotoLibrary.authorizationStatus() {
+		case .NotDetermined:
+			PHPhotoLibrary.requestAuthorization({
+				(status: PHAuthorizationStatus) -> Void in
+				completionHandler(status)
+			})
+		default:
+			completionHandler(PHPhotoLibrary.authorizationStatus())
+		}
+	}
+	
+//MARK: UIImagePickerController
+	func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]!) {
+		var returnedImage = info[UIImagePickerControllerEditedImage] as UIImage
+		self.selectedImage = returnedImage
+		self.dismissViewControllerAnimated(true, completion: {
+			() -> Void in
+			
+			//Add PhotoController awesomeness in here.
+			NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+				self.selectedImageView.image = self.selectedImage
+			})
+		})
+	}
 	
 //MARK: View methods
 	override func viewDidDisappear(animated: Bool) {
@@ -80,4 +130,19 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+	
+//MARK: Touch methods
+	override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+		super.touchesBegan(touches, withEvent: event)
+		
+		if touches.count >= 1 {
+			println("At least 1 touch!")
+		}
+	}
+	
+//MARK: UIGestureRecognizer
+//	func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer!) -> Bool {
+//		super.touchesBegan(<#touches: NSSet!#>, withEvent: <#UIEvent!#>)
+//		gestureRecognizer.numberOfTouches()
+//	}
 }

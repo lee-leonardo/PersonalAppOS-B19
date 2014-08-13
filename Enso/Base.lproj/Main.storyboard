@@ -116,10 +116,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="The old pond: a frog jumps in, the sound of water" translatesAutoresizingMaskIntoConstraints="NO" id="CdR-HT-bK8">
-                                <rect key="frame" x="150" y="150" width="300" height="300"/>
+                                <rect key="frame" x="150" y="100" width="300" height="400"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="fG0-Zw-4Lv"/>
+                                    <constraint firstAttribute="height" constant="400" id="fG0-Zw-4Lv"/>
                                     <constraint firstAttribute="width" constant="300" id="srr-ef-Jth"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
@@ -131,8 +131,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Write" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ie-Jc-bSR">
-                                <rect key="frame" x="279" y="91" width="59" height="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ie-Jc-bSR">
+                                <rect key="frame" x="271" y="50" width="59" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -184,13 +184,16 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MM9-fb-6UO">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MM9-fb-6UO">
                                 <rect key="frame" x="180" y="90" width="240" height="240"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="DCe-z5-0zI"/>
                                     <constraint firstAttribute="height" constant="240" id="Wdb-Cc-lqI"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="wlX-ZJ-Rov" appends="YES" id="GQz-2O-CY7"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -207,10 +210,16 @@
                     <tabBarItem key="tabBarItem" title="Capture" id="1Xh-kW-BnC"/>
                     <connections>
                         <outlet property="filterPickerView" destination="xjs-In-rhJ" id="gLk-XD-FQu"/>
-                        <outlet property="selectedImageView" destination="MM9-fb-6UO" id="nG9-Bp-2NP"/>
+                        <outlet property="selectedImageView" destination="MM9-fb-6UO" id="PVh-0q-ARX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wSO-FE-Hoa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="wlX-ZJ-Rov">
+                    <connections>
+                        <action selector="selectPhoto:" destination="1Va-sO-eac" id="Qul-Iu-SwM"/>
+                        <outlet property="delegate" destination="1Va-sO-eac" id="Gkr-W9-HLO"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2308" y="1342"/>
         </scene>
