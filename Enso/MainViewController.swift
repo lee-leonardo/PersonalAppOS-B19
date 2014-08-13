@@ -11,13 +11,12 @@ import UIKit
 class MainViewController: UIViewController {
 	
 	var scrollView  : UIScrollView!
-
+	var haiku : Haiku?
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-		self.storyboard
 
 		self.scrollView = UIScrollView(frame: self.view.frame)
-		
 		
 		var totalWidth = self.view.frame.width * 3
 		var totalHeight = self.view.frame.height
@@ -53,9 +52,7 @@ class MainViewController: UIViewController {
 		
 		
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

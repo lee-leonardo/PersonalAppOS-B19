@@ -24,9 +24,6 @@ class PhotoController {
 	
 	init (){}
 	
-	
-	
-	
 	func requestPHAsset(frameWidth : CGFloat, frameHeight : CGFloat) {
 		
 		self.photoManager.requestImageForAsset(asset, targetSize: CGSize(width: frameWidth, height: frameHeight), contentMode: PHImageContentMode.AspectFill, options: nil) {

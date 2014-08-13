@@ -135,9 +135,10 @@
 			isa = PBXGroup;
 			children = (
 				38CBF029199AC041002652C4 /* MainViewController.swift */,
-				388BE3C31999711E00437E8F /* ShareViewController.swift */,
 				388BE3C51999713D00437E8F /* HaikuViewController.swift */,
-				38CBF024199A9418002652C4 /* Media Controllers */,
+				388BE3C31999711E00437E8F /* ShareViewController.swift */,
+				388BE3C71999715A00437E8F /* PhotoViewController.swift */,
+				38CBF022199A9414002652C4 /* PhotoController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -168,15 +169,6 @@
 				38CBF01C199A7DB1002652C4 /* Triangle.png */,
 			);
 			path = "Stock icons";
-			sourceTree = "<group>";
-		};
-		38CBF024199A9418002652C4 /* Media Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				38CBF022199A9414002652C4 /* PhotoController.swift */,
-				388BE3C71999715A00437E8F /* PhotoViewController.swift */,
-			);
-			name = "Media Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

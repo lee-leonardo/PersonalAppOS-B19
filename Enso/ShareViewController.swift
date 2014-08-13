@@ -21,6 +21,22 @@ class ShareViewController: UIViewController {
 		
 	}
 	
+	@IBAction func facebookButton(sender: AnyObject) {
+		if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
+			var shareSheet = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+			shareSheet.setInitialText("Test text")
+//			shareSheet.addImage(<#image: UIImage!#>)
+			self.presentViewController(shareSheet, animated: true, completion: nil)
+		}
+	}
+	
+	@IBAction func instagramButton(sender: AnyObject) {
+		println("Need to implement")
+	}
+	
+	@IBAction func pinterestButton(sender: AnyObject) {
+		println("Need to implement")
+	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()

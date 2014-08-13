@@ -12,13 +12,16 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 	
 	
 	@IBOutlet weak var selectedImageView: UIImageView!
-
 	@IBOutlet weak var filterPickerView: UIPickerView!
 	
-	
+//MARK: View methods
     override func viewDidLoad() {
         super.viewDidLoad()
 		//println("Photo controller loaded.")
+		self.selectedImageView.layer.borderWidth = 1.0
+		self.selectedImageView.layer.borderColor = UIColor.lightGrayColor().CGColor
+		self.selectedImageView.layer.cornerRadius = self.selectedImageView.frame.width * 0.25
+		self.selectedImageView.layer.masksToBounds = true
 		
     }
 	
@@ -27,27 +30,27 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 		
 		if row == 0 {
 			if component == 0 {
-				return NSAttributedString(string: "Filter")
+				return NSAttributedString(string: "Filters")
 			}
-			if component == 1 {
-				return NSAttributedString(string: "Intensity")
-			}
-			if component == 2 {
-				return NSAttributedString(string: "Value")
-			}
+//			if component == 1 {
+//				return NSAttributedString(string: "Intensity")
+//			}
+//			if component == 2 {
+//				return NSAttributedString(string: "Value")
+//			}
 		}
 
-		if component == 2 {
-			return NSAttributedString(string: String(row))
-		}
-		
-		if row % 5 == 0 {
-			return NSAttributedString(string: "End")
-		}
-
-		if row % 2 == 0 {
-			return NSAttributedString(string: "Awesome")
-		}
+//		if component == 2 {
+//			return NSAttributedString(string: String(row))
+//		}
+//		
+//		if row % 5 == 0 {
+//			return NSAttributedString(string: "End")
+//		}
+//
+//		if row % 2 == 0 {
+//			return NSAttributedString(string: "Awesome")
+//		}
 		
 		
 		return NSAttributedString(string: "String")
@@ -60,7 +63,8 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 	
 //MARK: UIPickerViewDataSource
 	func numberOfComponentsInPickerView(pickerView: UIPickerView!) -> Int {
-		return 3
+//		return 3
+		return 1
 	}
 	func pickerView(pickerView: UIPickerView!, numberOfRowsInComponent component: Int) -> Int {
 		return 11
