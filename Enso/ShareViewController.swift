@@ -15,26 +15,61 @@ class ShareViewController: UIViewController {
 
 	@IBAction func twitterButton(sender: AnyObject) {
 		NSNotificationCenter.defaultCenter().postNotificationName("ShareRequest", object: nil)
-
+		//println("Haiku text: \(haiku?.lines)")
 		
-		if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
-			var tweetSheet = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-			tweetSheet.setInitialText("Test text")
-//tweetSheet.addImage(<#image: UIImage!#>)
-			self.presentViewController(tweetSheet, animated: true, completion: nil)
+		if self.haiku != nil {
+			
+			if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+				var tweetSheet = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+				
+				tweetSheet.setInitialText(self.haiku?.lines)
+				
+				if self.haiku?.photo != nil {
+					tweetSheet.addImage(self.haiku?.photo)
+
+				}
+				self.presentViewController(tweetSheet, animated: true, completion: nil)
+			}
+		} else {
+			//Alert Action
+			var cannotAlert = UIAlertController(title: "Not setup!", message: "Somethings wrong with your haiku!", preferredStyle: UIAlertControllerStyle.Alert)
+			let okay = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Cancel, handler: nil)
+			cannotAlert.addAction(okay)
+			
+			self.presentViewController(cannotAlert, animated: true, completion: nil)
 		}
+		
+		
+
 		
 	}
 	
 	@IBAction func facebookButton(sender: AnyObject) {
 		NSNotificationCenter.defaultCenter().postNotificationName("ShareRequest", object: nil)
 
-		if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
-			var shareSheet = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-			shareSheet.setInitialText("Test text")
-//			shareSheet.addImage(<#image: UIImage!#>)
-			self.presentViewController(shareSheet, animated: true, completion: nil)
+		if self.haiku != nil {
+			
+			if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
+				var shareSheet = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+				shareSheet.setInitialText(self.haiku?.lines)
+				
+				if self.haiku?.photo != nil {
+					shareSheet.addImage(self.haiku?.photo)
+				}
+				
+				self.presentViewController(shareSheet, animated: true, completion: nil)
+			}
+			
+		} else {
+			//Alert Action
+			var cannotAlert = UIAlertController(title: "Not setup!", message: "Somethings wrong with your haiku!", preferredStyle: UIAlertControllerStyle.Alert)
+			let okay = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Cancel, handler: nil)
+			cannotAlert.addAction(okay)
+			
+			self.presentViewController(cannotAlert, animated: true, completion: nil)
 		}
+		
+		
 	}
 	
 	@IBAction func instagramButton(sender: AnyObject) {
@@ -53,12 +88,12 @@ class ShareViewController: UIViewController {
     }
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		println("View Should've appeared")
+		//println("View Should've appeared")
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: "receiveHaiku:", name: "ShareHaiku", object: nil)
 	}
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		println("ViewDidAppear")
+		//println("ViewDidAppear")
 	}
 	override func viewWillDisappear(animated: Bool) {
 		NSNotificationCenter.defaultCenter().removeObserver(self, name: "ShareHaiku", object: nil)
@@ -68,17 +103,24 @@ class ShareViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 	
-	
-//MARK: NotificationCenter methods
-	func receiveHaiku( sender: AnyObject! ) {
-		if let gotHaiku = sender as? Dictionary<String,Haiku> {
-			println("\(gotHaiku)")
-			if let actualHaiku = gotHaiku["haiku"] {
-				println("\(actualHaiku.lines)")
-				self.haiku = Haiku(haiku: actualHaiku.lines)
-				if actualHaiku.photo? != nil {
-					println("\(actualHaiku.photo)")
-					self.haiku?.photo = actualHaiku.photo
+//MARK: Target-Action
+	func receiveHaiku(sender: AnyObject! ) {
+		//println("receiveHaikuFired")
+		//println("receiveHaiku object: \(sender)")
+		
+		if let notification = sender as? NSNotification {
+			
+			if let haikuDict = notification.userInfo as? Dictionary<String,Haiku> {
+				//println("\(haikuDict)")
+				
+				if let actualHaiku = haikuDict["haiku"] {
+					//println("\(actualHaiku.lines)")
+					self.haiku = Haiku(haiku: actualHaiku.lines)
+					
+					if actualHaiku.photo? != nil {
+						//println("\(actualHaiku.photo)")
+						self.haiku?.photo = actualHaiku.photo
+					}
 				}
 			}
 		}

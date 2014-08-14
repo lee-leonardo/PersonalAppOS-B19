@@ -15,20 +15,14 @@ protocol PhotoDelegate {
 
 class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 	
-	
 	/*
 	
 	Make a collectionView, there's not something out of the box yet.
-	
 	CI Funhouse play around with it
-	
 	Checkout the sample code CIFunhouse for iPhone (iOS).
-	
 	Notification by full screen width. -> Content offset.
-	
 		Do the content offset make it relative.
 		Navigation controller without a bar is a good idea.
-	
 	Timeout interval:
 		Make a class for a call out controller.
 		Give it class methods to show callout with m
@@ -43,27 +37,8 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 	var selectedImage : UIImage?
 	var delegate : PhotoDelegate?
 	var filters = ["Sepia Tone", "Faded Photo"]
-	
-//MARK: 
-	func selectPhoto(sender: AnyObject) {
-		//println("Long pressed")
-		
-		if let longPress = sender as? UILongPressGestureRecognizer {
-			switch longPress.state {
-			case UIGestureRecognizerState.Began:
-				//println("began")
-				if self.photoActionController.popoverPresentationController != nil {
-					self.photoActionController.popoverPresentationController.sourceRect = CGRect(x: 0, y: self.selectedImageView.frame.height, width: 0, height: 0)
-					self.photoActionController.popoverPresentationController.sourceView = self.selectedImageView
-				}
-				self.presentViewController(self.photoActionController, animated: true, completion: nil)
-			case UIGestureRecognizerState.Ended:
-				println("ended")
-			default:
-				println("something else=")
-			}
-		}
-	}
+
+//MARK: ActionSheet
 	func buildActionSheet() -> UIAlertController {
 		var chooseActionSheet = UIAlertController(title: "Get photo from", message: "Please choose a place to get a photo from", preferredStyle: UIAlertControllerStyle.ActionSheet)
 		var selectPhoto = UIAlertAction(title: "Photo Library", style: UIAlertActionStyle.Default, handler: {
@@ -174,16 +149,37 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 			//Add PhotoController awesomeness in here.
 			NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
 				self.selectedImageView.image = self.selectedImage
-				println("Should shoot notification to main")
+				//println("Should shoot notification to main")
 				NSNotificationCenter.defaultCenter().postNotificationName("ImageSelectedNotification", object: self.selectedImage)
 //				self.delegate!.photoSelected(self.selectedImage!)
 			})
 		})
 	}
 	
-//MARK: NSNotificationCenter
+//MARK: Target-Action
 	func imageViewChanged(sender: AnyObject!) {
 		//println("This works!")
 		self.delegate?.photoSelected(selectedImage!)
+	}
+	func selectPhoto(sender: AnyObject) {
+		//println("Long pressed")
+		
+		if let longPress = sender as? UILongPressGestureRecognizer {
+			switch longPress.state {
+			case UIGestureRecognizerState.Began:
+				//println("began")
+				if self.photoActionController.popoverPresentationController != nil {
+					self.photoActionController.popoverPresentationController.sourceRect = CGRect(x: 0, y: self.selectedImageView.frame.height, width: 0, height: 0)
+					self.photoActionController.popoverPresentationController.sourceView = self.selectedImageView
+				}
+				self.presentViewController(self.photoActionController, animated: true, completion: nil)
+			case UIGestureRecognizerState.Ended:
+				//println("ended")
+				break
+			default:
+				//println("something else=")
+				break
+			}
+		}
 	}
 }

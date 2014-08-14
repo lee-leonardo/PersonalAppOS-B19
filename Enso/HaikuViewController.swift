@@ -18,11 +18,11 @@ class HaikuViewController: UIViewController, UITextViewDelegate {
 	@IBOutlet weak var syllableCount: UILabel!
 	var delegate : HaikuDelegate?
 	
-	
-	
-	func randomStartHaiku() -> String {
+	func randomStartHaiku() {
 		var random = arc4random_uniform(10)
-		return "The old pond:\na frog jumps in,\nthe sound of water"
+		self.haikuTextView.text = "The old pond:\na frog jumps in,\nthe sound of water"
+		
+		haikuTextView.resignFirstResponder()
 	}
 	
 //MARK: View methods
@@ -33,15 +33,14 @@ class HaikuViewController: UIViewController, UITextViewDelegate {
 
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: "textViewChanged:", name: UITextViewTextDidChangeNotification, object: nil)
 		
-		
 	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		//println("Haiku View loaded")
+		randomStartHaiku()
+		self.delegate?.haikuTextChanged(haikuTextView.text)
 		
-		haikuTextView.text = randomStartHaiku()
-		haikuTextView.resignFirstResponder()
     }
 	override func viewWillDisappear(animated: Bool) {
 		self.delegate!.haikuTextChanged(haikuTextView.text)
@@ -67,13 +66,9 @@ class HaikuViewController: UIViewController, UITextViewDelegate {
 			}
 		}
 	}
-//MARK: TextViewDelegate	
+
+//MARK: Target-Action
 	func textViewChanged(sender: AnyObject!) {
 		self.delegate?.haikuTextChanged(haikuTextView.text)
 	}
-	
-	
-	
-//MARK: Delay method
-	//This'll provide functionality that will count the haiku's string values.
 }

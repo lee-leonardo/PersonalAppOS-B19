@@ -22,6 +22,8 @@ class MainViewController: UIViewController, HaikuDelegate, PhotoDelegate {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: "shareRequest:", name: "ShareRequest", object: nil)
+		
+		//println("\(self.haiku?.lines)")
 	}
 	override func viewWillDisappear(animated: Bool) {
 		super.viewWillDisappear(animated)
@@ -32,6 +34,7 @@ class MainViewController: UIViewController, HaikuDelegate, PhotoDelegate {
         super.didReceiveMemoryWarning()
     }
 	
+//MARK: Methods
 	func makeMainScrollView() {
 		var totalWidth = self.view.frame.width * 3
 		var totalHeight = self.view.frame.height
@@ -87,11 +90,11 @@ class MainViewController: UIViewController, HaikuDelegate, PhotoDelegate {
 		self.haiku?.photo = selectedImage
 	}
 	
-//MARK: Notifications
+//MARK: Target-Action
 	func shareRequest(sender : AnyObject!) {
-		if haiku != nil {
-			println("Share request received!")
-			var sendHaiku = ["haiku" : haiku! ]
+		if self.haiku != nil {
+			//println("Share request received!")
+			var sendHaiku = NSDictionary(object: self.haiku, forKey: "haiku")
 			NSNotificationCenter.defaultCenter().postNotificationName("ShareHaiku", object: self, userInfo: sendHaiku)
 		}
 

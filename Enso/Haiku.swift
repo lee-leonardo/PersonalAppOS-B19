@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Haiku {
+class Haiku : NSObject {
 	var lines : String
 	var photo : UIImage?
 	
