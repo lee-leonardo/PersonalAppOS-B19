@@ -6,10 +6,11 @@
 //  Copyright (c) 2014 Leonardo Lee. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Haiku {
 	var lines : String
+	var photo : UIImage?
 	
 	init(haiku text: String) {
 		self.lines = text
@@ -17,9 +18,6 @@ class Haiku {
 	
 	//Algorithm used here is attributed to Franklin Mark Liang of Stanford University
 	func countSyllables() -> Int {
-		
-		
-		
 		return 0
 	}
 }

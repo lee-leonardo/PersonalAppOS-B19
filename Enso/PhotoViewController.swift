@@ -87,8 +87,8 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
 		
 		//println("Photo controller loaded.")
-		self.selectedImageView.layer.borderWidth = 1.0
-		self.selectedImageView.layer.borderColor = UIColor.lightGrayColor().CGColor
+		self.selectedImageView.layer.borderWidth = 4.0
+		self.selectedImageView.layer.borderColor = UIColor(hue: 120 / 360, saturation: 0.4, brightness: 0.8, alpha: 0.4).CGColor
 		self.selectedImageView.layer.cornerRadius = self.selectedImageView.frame.width * (3.0/10.0)
 		self.selectedImageView.layer.masksToBounds = true
 		
@@ -110,8 +110,14 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 			self.selectedImageView.image = selectedImage
 		}
 		
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "imageViewChanged:", name: UITextViewTextDidChangeNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "imageViewChanged:", name: "ImageSelectedNotification", object: nil)
+		//println("Should've added self as an observer")
 
+	}
+	override func viewDidDisappear(animated: Bool) {
+		super.viewDidDisappear(animated)
+		//println("This is a photo view disappearing!")
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: "ImageSelectedNotification", object: nil)
 	}
 	
 //MARK: UIPickerViewDelegate
@@ -168,25 +174,16 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 			//Add PhotoController awesomeness in here.
 			NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
 				self.selectedImageView.image = self.selectedImage
-				NSNotificationCenter.defaultCenter().postNotificationName("imageViewChanged:", object: self.selectedImage)
+				println("Should shoot notification to main")
+				NSNotificationCenter.defaultCenter().postNotificationName("ImageSelectedNotification", object: self.selectedImage)
 //				self.delegate!.photoSelected(self.selectedImage!)
 			})
 		})
 	}
 	
-//MARK: View methods
-	override func viewDidDisappear(animated: Bool) {
-		super.viewDidDisappear(animated)
-		//println("This is a photo view disappearing!")
-	}
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-	
 //MARK: NSNotificationCenter
 	func imageViewChanged(sender: AnyObject!) {
-		println("This works!")
+		//println("This works!")
 		self.delegate?.photoSelected(selectedImage!)
 	}
 }

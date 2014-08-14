@@ -45,6 +45,7 @@ class HaikuViewController: UIViewController, UITextViewDelegate {
     }
 	override func viewWillDisappear(animated: Bool) {
 		self.delegate!.haikuTextChanged(haikuTextView.text)
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: UITextViewTextDidChangeNotification, object: nil)
 	}
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

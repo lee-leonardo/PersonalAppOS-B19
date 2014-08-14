@@ -12,36 +12,22 @@ class MainViewController: UIViewController, HaikuDelegate, PhotoDelegate {
 	
 	var scrollView  : UIScrollView!
 	var haiku : Haiku?
-	var image : UIImage?
-	var helpTimer : NSTimer!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 
 		self.scrollView = UIScrollView(frame: self.view.frame)
 		makeMainScrollView()
-		//self.resetTimer()
     }
-	
-//	func resetTimer() {
-//		if self.helpTimer != nil {
-//			self.helpTimer.invalidate()
-//		}
-//		
-//		self.helpTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("showHelpMessageCallout"), userInfo: nil, repeats: true)
-//	}
-	
-//	func showHelpMessageCallout() {
-//		self.showCalloutWithMessage("Tap here to get started", inRect: CGRect(x: 50, y: 80, width: 120, height: 90))
-//		self.helpTimer.invalidate()
-//	}
-	
-	override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
-		
-		//self.resetTimer()
-		super.touchesBegan(touches, withEvent: event)
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "shareRequest:", name: "ShareRequest", object: nil)
 	}
-	
+	override func viewWillDisappear(animated: Bool) {
+		super.viewWillDisappear(animated)
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: "ShareRequest", object: nil)
+
+	}
 	override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -71,7 +57,7 @@ class MainViewController: UIViewController, HaikuDelegate, PhotoDelegate {
 		
 		haikuController.view.frame = CGRect(x: firstX, y: 0, width: standardWidth, height: standardHeight)
 		photoController.view.frame = CGRect(x: secondX, y: 0, width: standardWidth, height: standardHeight)
-		shareController.view.frame = CGRect(x: thirdX, y: 0, width: standardWidth + 5, height: standardHeight)
+		shareController.view.frame = CGRect(x: thirdX, y: 0, width: standardWidth, height: standardHeight)
 		
 		self.addChildViewController(haikuController)
 		self.addChildViewController(photoController)
@@ -88,13 +74,27 @@ class MainViewController: UIViewController, HaikuDelegate, PhotoDelegate {
 	
 //MARK: Delegates
 	func haikuTextChanged(haikuText: String) {
-		self.haiku = Haiku(haiku: haikuText)
-		println("Haiku text")
-		println("\(self.haiku?.lines)")
+		if self.haiku != nil {
+			self.haiku?.lines = haikuText
+		} else {
+			self.haiku = Haiku(haiku: haikuText)
+		}
+		//println("Main received Haiku Text")
+		//println("\(self.haiku?.lines)")
 	}
 	func photoSelected(selectedImage: UIImage) {
-		println("Photo has been received by mainVC")
-		self.image = selectedImage
+		//println("Main received Photo")
+		self.haiku?.photo = selectedImage
+	}
+	
+//MARK: Notifications
+	func shareRequest(sender : AnyObject!) {
+		if haiku != nil {
+			println("Share request received!")
+			var sendHaiku = ["haiku" : haiku! ]
+			NSNotificationCenter.defaultCenter().postNotificationName("ShareHaiku", object: self, userInfo: sendHaiku)
+		}
+
 	}
 	
 }

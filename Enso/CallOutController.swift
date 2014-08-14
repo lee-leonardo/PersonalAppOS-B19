@@ -8,6 +8,36 @@
 
 import UIKit
 
+
+//var helpTimer : NSTimer!
+//
+//override func viewDidLoad() {
+//	super.viewDidLoad()
+//	
+//	self.scrollView = UIScrollView(frame: self.view.frame)
+//	makeMainScrollView()
+//	//self.resetTimer()
+//}
+//
+////	func resetTimer() {
+////		if self.helpTimer != nil {
+////			self.helpTimer.invalidate()
+////		}
+////
+////		self.helpTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("showHelpMessageCallout"), userInfo: nil, repeats: true)
+////	}
+//
+////	func showHelpMessageCallout() {
+////		self.showCalloutWithMessage("Tap here to get started", inRect: CGRect(x: 50, y: 80, width: 120, height: 90))
+////		self.helpTimer.invalidate()
+////	}
+//
+//override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+//	
+//	//self.resetTimer()
+//	super.touchesBegan(touches, withEvent: event)
+//}
+
 //extension UIViewController {
 //	
 //	func showCalloutWithMessage(message: String, inRect frame: CGRect) {
