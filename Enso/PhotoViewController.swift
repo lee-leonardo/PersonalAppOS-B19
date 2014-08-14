@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Photos
 
 protocol PhotoDelegate {
 	func photoSelected(selectedImage: UIImage)
@@ -18,22 +17,17 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 	/*
 	
 	Make a collectionView, there's not something out of the box yet.
-	CI Funhouse play around with it
-	Checkout the sample code CIFunhouse for iPhone (iOS).
-	Notification by full screen width. -> Content offset.
-		Do the content offset make it relative.
-		Navigation controller without a bar is a good idea.
-	Timeout interval:
-		Make a class for a call out controller.
-		Give it class methods to show callout with m
-	
+	CI Funhouse play around with it -> Checkout the sample code CIFunhouse for iPhone (iOS).
 	
 	*/
 	
 	@IBOutlet weak var selectedImageView: UIImageView!
 	@IBOutlet weak var filterPickerView: UIPickerView!
+	
+	var photoController = PhotosFrameworkController()
 	var photoPicker = UIImagePickerController()
 	var photoActionController = UIAlertController()
+	
 	var selectedImage : UIImage?
 	var delegate : PhotoDelegate?
 	var filters = ["Sepia Tone", "Faded Photo"]
@@ -70,6 +64,7 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 		self.photoPicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
 		self.photoPicker.allowsEditing = true
 		self.photoPicker.delegate = self
+
 		
 		var longPress = UILongPressGestureRecognizer(target: self, action: "selectPhoto:")
 		//longPress.minimumPressDuration = 1.5
@@ -77,66 +72,26 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 		
 		self.photoActionController = buildActionSheet()
 		
-		
     }
 	override func viewWillAppear(animated: Bool) {
 		if selectedImage != nil {
-//			println("Image exists!")
+			//println("Image exists!")
 			self.selectedImageView.image = selectedImage
+			self.filterPickerView.userInteractionEnabled = true
+		} else {
+			self.filterPickerView.userInteractionEnabled = false
 		}
 		
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: "imageViewChanged:", name: "ImageSelectedNotification", object: nil)
 		//println("Should've added self as an observer")
+		NSNotificationCenter.defaultCenter().addObserver(self.photoController, selector: "assetSelected:", name: "PHAssetRequest", object: nil)
 
 	}
 	override func viewDidDisappear(animated: Bool) {
 		super.viewDidDisappear(animated)
 		//println("This is a photo view disappearing!")
 		NSNotificationCenter.defaultCenter().removeObserver(self, name: "ImageSelectedNotification", object: nil)
-	}
-	
-//MARK: UIPickerViewDelegate
-	func pickerView(pickerView: UIPickerView!, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString! {
-		
-		if row == 0 {
-			if component == 0 {
-				return NSAttributedString(string: "Filters")
-			}
-		}
-		if row != 0 {
-			
-		}
-		
-		return NSAttributedString(string: "String")
-	}
-	func pickerView(pickerView: UIPickerView!, titleForRow row: Int, forComponent component: Int) -> String! {
-		return "test"
-	}
-	
-	func pickerView(pickerView: UIPickerView!, didSelectRow row: Int, inComponent component: Int) {
-		println("selected filter: \(self.filters[row])")
-	}
-	
-//MARK: UIPickerViewDataSource
-	func numberOfComponentsInPickerView(pickerView: UIPickerView!) -> Int {
-//		return 3
-		return 1
-	}
-	func pickerView(pickerView: UIPickerView!, numberOfRowsInComponent component: Int) -> Int {
-		return self.filters.count
-	}
-	
-//MARK: PHPhotoLibrary
-	func checkAuthentication(completionHandler: (PHAuthorizationStatus) -> Void) -> Void {
-		switch PHPhotoLibrary.authorizationStatus() {
-		case .NotDetermined:
-			PHPhotoLibrary.requestAuthorization({
-				(status: PHAuthorizationStatus) -> Void in
-				completionHandler(status)
-			})
-		default:
-			completionHandler(PHPhotoLibrary.authorizationStatus())
-		}
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: "PHAssetRequest", object: nil)
 	}
 	
 //MARK: UIImagePickerController
@@ -151,9 +106,46 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 				self.selectedImageView.image = self.selectedImage
 				//println("Should shoot notification to main")
 				NSNotificationCenter.defaultCenter().postNotificationName("ImageSelectedNotification", object: self.selectedImage)
-//				self.delegate!.photoSelected(self.selectedImage!)
+				//self.delegate!.photoSelected(self.selectedImage!)
 			})
 		})
+	}
+	
+//MARK: UIPickerViewDelegate & UIPickerViewDataSource
+	func pickerView(pickerView: UIPickerView!, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString! {
+		
+		if row == 0 {
+			if component == 0 {
+				return NSAttributedString(string: "Filters")
+			}
+		}
+		if row != 0 {
+			return NSAttributedString(string: photoController.filterLabels[row - 1])
+		}
+		
+		return NSAttributedString(string: "String")
+	}
+	
+	func pickerView(pickerView: UIPickerView!, titleForRow row: Int, forComponent component: Int) -> String! {
+		return "test"
+	}
+	
+	func pickerView(pickerView: UIPickerView!, didSelectRow row: Int, inComponent component: Int) {
+		if selectedImage != nil {
+			if row == 0 {
+				println("No filter selected")
+			} else {
+				println("filter name is: \(self.photoController.filterLabels[row - 1])")
+			}
+		}
+	}
+	
+	func numberOfComponentsInPickerView(pickerView: UIPickerView!) -> Int {
+		return 1
+	}
+	
+	func pickerView(pickerView: UIPickerView!, numberOfRowsInComponent component: Int) -> Int {
+		return self.photoController.filterLabels.count + 1
 	}
 	
 //MARK: Target-Action

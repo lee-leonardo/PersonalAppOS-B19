@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-class PhotoController {
+class PhotosFrameworkController {
 	
 	let ensoFormatIdentifier = "com.ensoApp.cf" //This'll need to change.
 	let ensoFormatVersion = "0.1"
@@ -20,13 +20,13 @@ class PhotoController {
 	var requestedImage : CIImage?
 	var context = CIContext(options: nil)
 	
-	let filterLabels = ["Sepia", "Vibrance", "Noir"]
+	let filterLabels = ["Sepia", "Vibrance", "Noir", "Neon", "Monet", "Seurat"]
 	let filterLibrary = ["Sepia":"CISepiaTone", "Vibrance":"", "Noir":""]
 	
 	init (){}
-	
+
+//MARK: PHAsset Fetch requests
 	func requestPHAsset(frameWidth : CGFloat, frameHeight : CGFloat) {
-		
 		self.photoManager.requestImageForAsset(asset, targetSize: CGSize(width: frameWidth, height: frameHeight), contentMode: PHImageContentMode.AspectFill, options: nil) {
 			(image: UIImage!, [NSObject : AnyObject]!) -> Void in
 			NSOperationQueue.mainQueue().addOperationWithBlock({
@@ -45,24 +45,26 @@ class PhotoController {
 			return optionData.formatIdentifier == self.ensoFormatIdentifier && optionData.formatVersion == self.ensoFormatVersion
 		}
 
-//Here! is where the filter needs to be!
-		var filterExample = CIFilter(name: "CISepiaTone")
+		//Edit for filter!
+		var filter = CIFilter(name: filterLibrary[filter])
+		filter.setDefaults()
+
 		
 		self.asset!.requestContentEditingInputWithOptions(options, completionHandler: {
 			(contentEditingInput: PHContentEditingInput!, info: [NSObject : AnyObject]!) -> Void in
+			
 			var imageURL = contentEditingInput.fullSizeImageURL
 			var imageOrientation = contentEditingInput.fullSizeImageOrientation
 			
 			var inputImage = CIImage(contentsOfURL: imageURL)
 			inputImage.imageByApplyingOrientation(imageOrientation)
 			
-			//Selected Filter
-			let filter = CIFilter(name: "CISepiaTone")
-			filter.setDefaults()
+			
+			//Filter output stuff
 			filter.setValue(inputImage, forKey: kCIInputImageKey)
-
 			var outputImage = filter.outputImage
 			
+			//Finalizing
 			let cgImage = self.context.createCGImage(outputImage, fromRect: outputImage.extent())
 			let finishedImage = UIImage(CGImage: cgImage)
 			var jpegData = UIImageJPEGRepresentation(finishedImage, 0.9)
@@ -94,6 +96,19 @@ class PhotoController {
 			})
 		})
 		
+	}
+	
+//MARK: PHAuthorization
+	func checkAuthentication(completionHandler: (PHAuthorizationStatus) -> Void) -> Void {
+		switch PHPhotoLibrary.authorizationStatus() {
+		case .NotDetermined:
+			PHPhotoLibrary.requestAuthorization({
+				(status: PHAuthorizationStatus) -> Void in
+				completionHandler(status)
+			})
+		default:
+			completionHandler(PHPhotoLibrary.authorizationStatus())
+		}
 	}
 	
 }

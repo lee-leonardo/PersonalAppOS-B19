@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3818C14E199D7CFB00CC75A1 /* PhotoSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3818C14D199D7CFB00CC75A1 /* PhotoSelectionViewController.swift */; };
+		3839A7E5199D71A0006EFA7D /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3839A7E4199D71A0006EFA7D /* NetworkController.swift */; };
 		388BE3A419996B9900437E8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3A319996B9900437E8F /* AppDelegate.swift */; };
 		388BE3A919996B9900437E8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 388BE3A719996B9900437E8F /* Main.storyboard */; };
 		388BE3AB19996B9900437E8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 388BE3AA19996B9900437E8F /* Images.xcassets */; };
@@ -21,7 +23,7 @@
 		38CBF01F199A7DB1002652C4 /* Square.png in Resources */ = {isa = PBXBuildFile; fileRef = 38CBF01A199A7DB1002652C4 /* Square.png */; };
 		38CBF020199A7DB1002652C4 /* Star.png in Resources */ = {isa = PBXBuildFile; fileRef = 38CBF01B199A7DB1002652C4 /* Star.png */; };
 		38CBF021199A7DB1002652C4 /* Triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 38CBF01C199A7DB1002652C4 /* Triangle.png */; };
-		38CBF023199A9414002652C4 /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBF022199A9414002652C4 /* PhotoController.swift */; };
+		38CBF023199A9414002652C4 /* PhotosFrameworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBF022199A9414002652C4 /* PhotosFrameworkController.swift */; };
 		38CBF02A199AC041002652C4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBF029199AC041002652C4 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3818C14D199D7CFB00CC75A1 /* PhotoSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectionViewController.swift; sourceTree = "<group>"; };
+		3839A7E4199D71A0006EFA7D /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		388BE39E19996B9900437E8F /* Enso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Enso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		388BE3A219996B9900437E8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		388BE3A319996B9900437E8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,7 +58,7 @@
 		38CBF01A199A7DB1002652C4 /* Square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Square.png; sourceTree = "<group>"; };
 		38CBF01B199A7DB1002652C4 /* Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star.png; sourceTree = "<group>"; };
 		38CBF01C199A7DB1002652C4 /* Triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Triangle.png; sourceTree = "<group>"; };
-		38CBF022199A9414002652C4 /* PhotoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
+		38CBF022199A9414002652C4 /* PhotosFrameworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosFrameworkController.swift; sourceTree = "<group>"; };
 		38CBF029199AC041002652C4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +80,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3818C14A199D7CB100CC75A1 /* PhotoSelection */ = {
+			isa = PBXGroup;
+			children = (
+				3818C14D199D7CFB00CC75A1 /* PhotoSelectionViewController.swift */,
+			);
+			name = PhotoSelection;
+			sourceTree = "<group>";
+		};
+		3839A7E3199D7181006EFA7D /* Framework Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				38CBF022199A9414002652C4 /* PhotosFrameworkController.swift */,
+				3839A7E4199D71A0006EFA7D /* NetworkController.swift */,
+				38BB36D3199BE960004E76DA /* CallOutController.swift */,
+			);
+			name = "Framework Controllers";
+			sourceTree = "<group>";
+		};
 		388BE39519996B9900437E8F = {
 			isa = PBXGroup;
 			children = (
@@ -139,9 +161,9 @@
 				38CBF029199AC041002652C4 /* MainViewController.swift */,
 				388BE3C51999713D00437E8F /* HaikuViewController.swift */,
 				388BE3C71999715A00437E8F /* PhotoViewController.swift */,
-				38CBF022199A9414002652C4 /* PhotoController.swift */,
 				388BE3C31999711E00437E8F /* ShareViewController.swift */,
-				38BB36D3199BE960004E76DA /* CallOutController.swift */,
+				3839A7E3199D7181006EFA7D /* Framework Controllers */,
+				3818C14A199D7CB100CC75A1 /* PhotoSelection */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -281,11 +303,13 @@
 				388BE3C41999711E00437E8F /* ShareViewController.swift in Sources */,
 				388BE3C61999713D00437E8F /* HaikuViewController.swift in Sources */,
 				38BB36D4199BE960004E76DA /* CallOutController.swift in Sources */,
-				38CBF023199A9414002652C4 /* PhotoController.swift in Sources */,
+				38CBF023199A9414002652C4 /* PhotosFrameworkController.swift in Sources */,
 				388BE3A419996B9900437E8F /* AppDelegate.swift in Sources */,
 				388BE3CA1999743500437E8F /* Haiku.swift in Sources */,
+				3818C14E199D7CFB00CC75A1 /* PhotoSelectionViewController.swift in Sources */,
 				388BE3C81999715A00437E8F /* PhotoViewController.swift in Sources */,
 				38CBF02A199AC041002652C4 /* MainViewController.swift in Sources */,
+				3839A7E5199D71A0006EFA7D /* NetworkController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

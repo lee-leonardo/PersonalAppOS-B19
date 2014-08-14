@@ -264,5 +264,58 @@
             </objects>
             <point key="canvasLocation" x="2308" y="1342"/>
         </scene>
+        <!--Photo Selection View Controller-->
+        <scene sceneID="ytc-9f-DI0">
+            <objects>
+                <viewController id="UGC-fM-EAm" customClass="PhotoSelectionViewController" customModule="Enso" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ff3-x0-Ovn"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tep-lw-PtB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pWU-q6-Mxk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ina-lg-W0x">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r5s-sN-3K1">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="9c3-eM-Wfq">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="UGC-fM-EAm" id="Lhm-fQ-0BI"/>
+                                    <outlet property="delegate" destination="UGC-fM-EAm" id="5j0-Po-7BL"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ina-lg-W0x" firstAttribute="leading" secondItem="pWU-q6-Mxk" secondAttribute="leading" id="5qw-uA-v7H"/>
+                            <constraint firstItem="ina-lg-W0x" firstAttribute="top" secondItem="pWU-q6-Mxk" secondAttribute="top" id="6hP-nj-7nk"/>
+                            <constraint firstAttribute="trailing" secondItem="ina-lg-W0x" secondAttribute="trailing" id="KAX-sd-UxQ"/>
+                            <constraint firstItem="Tep-lw-PtB" firstAttribute="top" secondItem="ina-lg-W0x" secondAttribute="bottom" id="bYT-pi-EKj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="photoSelectionTableView" destination="ina-lg-W0x" id="vAz-2h-aVR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hdX-eq-oAJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2308" y="2004"/>
+        </scene>
     </scenes>
 </document>

@@ -12,7 +12,8 @@ class MainViewController: UIViewController, HaikuDelegate, PhotoDelegate {
 	
 	var scrollView  : UIScrollView!
 	var haiku : Haiku?
-	
+
+//MARK: View methods
     override func viewDidLoad() {
         super.viewDidLoad()
 

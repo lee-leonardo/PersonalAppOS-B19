@@ -17,7 +17,8 @@ class HaikuViewController: UIViewController, UITextViewDelegate {
 	@IBOutlet weak var haikuTextView: UITextView!
 	@IBOutlet weak var syllableCount: UILabel!
 	var delegate : HaikuDelegate?
-	
+
+//MARK: HaikuController methods
 	func randomStartHaiku() {
 		var random = arc4random_uniform(10)
 		self.haikuTextView.text = "The old pond:\na frog jumps in,\nthe sound of water"
