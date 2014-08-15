@@ -25,10 +25,6 @@ class PhotosFrameworkController {
 	
 	init(){
 		self.fetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "photoLibraryPhotoSelected:", name: "PhotoSelected", object: nil)
-	}
-	deinit {
-		NSNotificationCenter.defaultCenter().removeObserver(self, name: "PhotoSelected", object: nil)
 	}
 
 //MARK: PHAsset Fetch requests
@@ -119,8 +115,28 @@ class PhotosFrameworkController {
 	
 	
 //MARK: Target-Action
-	func photoLibraryPhotoSelected(sender: AnyObject!) {
-		
+	func assetSelected(sender: AnyObject!) {
+		println("Observer received!")
+		if let notification = sender as? NSNotification {
+			println("Notification succeeded!")
+
+			if let assetDict = notification.userInfo as? Dictionary<String, PHAsset> {
+				println("User Info success!")
+				
+				if let assetReceived = assetDict["asset"] {
+					println("Asset has successfully been retrieved!")
+					
+					self.asset = assetReceived
+				}
+			}
+		}
 	}
-	
 }
+
+
+
+
+
+
+
+

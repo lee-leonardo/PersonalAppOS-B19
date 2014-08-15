@@ -7,13 +7,12 @@
 //
 
 import UIKit
-import Photos
 
 protocol PhotoDelegate {
 	func photoSelected(selectedImage: UIImage)
 }
 
-class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, PhotoSelectionDelegate {
+class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 	
 	/*
 	
@@ -88,9 +87,8 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 		} else {
 			self.filterPickerView.userInteractionEnabled = false
 		}
-		
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "imageViewChanged:", name: "ImageSelectedNotification", object: nil)
 		//println("Should've added self as an observer")
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "imageViewChanged:", name: "ImageSelectedNotification", object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self.photoController, selector: "assetSelected:", name: "PHAssetRequest", object: nil)
 
 	}
@@ -98,7 +96,7 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 		super.viewDidDisappear(animated)
 		//println("This is a photo view disappearing!")
 		NSNotificationCenter.defaultCenter().removeObserver(self, name: "ImageSelectedNotification", object: nil)
-		NSNotificationCenter.defaultCenter().removeObserver(self, name: "PHAssetRequest", object: nil)
+		NSNotificationCenter.defaultCenter().removeObserver(self.photoController, name: "PHAssetRequest", object: nil)
 	}
 	
 //MARK: UIImagePickerController
@@ -154,13 +152,6 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 	func pickerView(pickerView: UIPickerView!, numberOfRowsInComponent component: Int) -> Int {
 		return self.photoController.filterLabels.count + 1
 	}
-//MARK: PhotoSelectionDelegate
-	func photoSelected(asset: PHAsset) {
-		self.photoController.asset = asset
-		//Have photoController generate the new UIImage and then give it to this controller.
-		self.photoController.requestPHAsset(selectedImageView.frame.width, frameHeight: selectedImageView.frame.height)
-		
-	}
 	
 //MARK: Segue
 	override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
@@ -168,7 +159,6 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 			//println("This fired off normally!")
 			var destination = segue.destinationViewController as PhotoSelectionViewController
 			destination.fetchResults = self.photoController.fetchResult
-			destination.delegate = self
 		}
 	}
 	

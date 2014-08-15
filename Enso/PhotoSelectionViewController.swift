@@ -9,19 +9,12 @@
 import UIKit
 import Photos
 
-protocol PhotoSelectionDelegate {
-	func photoSelected(asset: PHAsset)
-}
-
 class PhotoSelectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
 	@IBOutlet weak var photoSelectionTableView: UICollectionView!
 	
 	var fetchResults : PHFetchResult!
 	var photoManager : PHCachingImageManager!
-
-	var delegate : PhotoSelectionDelegate?
-	
 	
 //MARK: View methods
     override func viewDidLoad() {
