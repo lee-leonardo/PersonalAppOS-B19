@@ -9,15 +9,24 @@
 import UIKit
 import Photos
 
+protocol PhotoSelectionDelegate {
+	func photoSelected(asset: PHAsset)
+}
+
 class PhotoSelectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
 	@IBOutlet weak var photoSelectionTableView: UICollectionView!
+	
+	var fetchResults : PHFetchResult!
+	var photoManager : PHCachingImageManager!
+
+	var delegate : PhotoSelectionDelegate?
 	
 	
 //MARK: View methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		self.photoManager = PHCachingImageManager()
 		
     }
     override func didReceiveMemoryWarning() {
@@ -27,12 +36,17 @@ class PhotoSelectionViewController: UIViewController, UICollectionViewDataSource
 //MARK: UICollectionView
 	func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
 		var cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as UICollectionViewCell
+		cell.backgroundColor = UIColor.blueColor()
 		
 		return cell
 	}
 	
 	func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
 		return 10
+	}
+	
+	func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
+		
 	}
 	
 }

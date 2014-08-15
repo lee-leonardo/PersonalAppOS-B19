@@ -15,7 +15,7 @@ class PhotosFrameworkController {
 	let ensoFormatVersion = "0.1"
 	
 	var asset : PHAsset?
-	var fetchResult : PHFetchResult?
+	var fetchResult : PHFetchResult!
 	var photoManager = PHCachingImageManager()
 	var requestedImage : CIImage?
 	var context = CIContext(options: nil)
@@ -23,7 +23,9 @@ class PhotosFrameworkController {
 	let filterLabels = ["Sepia", "Vibrance", "Noir", "Neon", "Monet", "Seurat"]
 	let filterLibrary = ["Sepia":"CISepiaTone", "Vibrance":"", "Noir":""]
 	
-	init (){}
+	init (){
+		self.fetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: nil)
+	}
 
 //MARK: PHAsset Fetch requests
 	func requestPHAsset(frameWidth : CGFloat, frameHeight : CGFloat) {

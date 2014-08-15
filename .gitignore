@@ -1,7 +1,7 @@
 # Xcode
 #
 build/
-Enso/Info.plist
+*.plist
 *.pbxuser
 !default.pbxuser
 *.mode1v3

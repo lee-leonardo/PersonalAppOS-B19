@@ -76,6 +76,7 @@ class ShareViewController: UIViewController {
 		println("Need to implement")
 	}
 	
+	
 	@IBAction func pinterestButton(sender: AnyObject) {
 		println("Need to implement")
 //		if SLComposeViewController.isAvailableForServiceType()
@@ -85,6 +86,7 @@ class ShareViewController: UIViewController {
         super.viewDidLoad()
 		self.view.backgroundColor = UIColor(hue: 240 / 360, saturation: 0.5, brightness: 1, alpha: 0.2)
 		//println("Preference Loaded!")
+
     }
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
@@ -124,6 +126,9 @@ class ShareViewController: UIViewController {
 				}
 			}
 		}
+	}
+	func pinIt(sender: AnyObject! ) {
+//		pinterest
 	}
 }
 

@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import Photos
 
 protocol PhotoDelegate {
 	func photoSelected(selectedImage: UIImage)
 }
 
-class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, PhotoSelectionDelegate {
 	
 	/*
 	
@@ -35,11 +36,16 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 //MARK: ActionSheet
 	func buildActionSheet() -> UIAlertController {
 		var chooseActionSheet = UIAlertController(title: "Get photo from", message: "Please choose a place to get a photo from", preferredStyle: UIAlertControllerStyle.ActionSheet)
-		var selectPhoto = UIAlertAction(title: "Photo Library", style: UIAlertActionStyle.Default, handler: {
+		var selectPhoto = UIAlertAction(title: "UIImagePicker", style: UIAlertActionStyle.Default, handler: {
 			(action: UIAlertAction!) -> Void in
 			self.presentViewController(self.photoPicker, animated: true, completion: nil)
 		})
+		var photoLibrary = UIAlertAction(title: "Photo Library", style: UIAlertActionStyle.Default) {
+			(action: UIAlertAction!) -> Void in
+			self.performSegueWithIdentifier("PhotoLibrary", sender: self)
+		}
 		var cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+		
 		chooseActionSheet.addAction(selectPhoto)
 		chooseActionSheet.addAction(cancel)
 		
@@ -146,6 +152,28 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 	
 	func pickerView(pickerView: UIPickerView!, numberOfRowsInComponent component: Int) -> Int {
 		return self.photoController.filterLabels.count + 1
+	}
+//MARK: PhotoSelectionDelegate
+	func photoSelected(asset: PHAsset) {
+		self.photoController.asset = asset
+		//Have photoController generate the new UIImage and then give it to this controller.
+		
+	}
+	
+//MARK: Segue
+//	override func performSegueWithIdentifier(identifier: String!, sender: AnyObject!) {
+//		if identifier == "PhotoLibrary" {
+//			var photoLibrary =
+			
+//			self.presentViewController(photoLibrary, animated: true, completion: nil)
+//		}
+//	}
+	override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+		if segue.identifier == "PhotoLibrary" {
+			var destination = segue.destinationViewController as PhotoSelectionViewController
+			destination.fetchResults = self.photoController.fetchResult
+			destination.delegate = self
+		}
 	}
 	
 //MARK: Target-Action

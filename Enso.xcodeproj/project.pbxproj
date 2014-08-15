@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3818C14E199D7CFB00CC75A1 /* PhotoSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3818C14D199D7CFB00CC75A1 /* PhotoSelectionViewController.swift */; };
 		3839A7E5199D71A0006EFA7D /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3839A7E4199D71A0006EFA7D /* NetworkController.swift */; };
+		3877A473199E684400E53963 /* Pinterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3877A470199E684400E53963 /* Pinterest.framework */; };
+		3877A474199E684400E53963 /* PinterestSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3877A472199E684400E53963 /* PinterestSDKResources.bundle */; };
 		388BE3A419996B9900437E8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3A319996B9900437E8F /* AppDelegate.swift */; };
 		388BE3A919996B9900437E8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 388BE3A719996B9900437E8F /* Main.storyboard */; };
 		388BE3AB19996B9900437E8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 388BE3AA19996B9900437E8F /* Images.xcassets */; };
@@ -17,6 +19,7 @@
 		388BE3C61999713D00437E8F /* HaikuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3C51999713D00437E8F /* HaikuViewController.swift */; };
 		388BE3C81999715A00437E8F /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3C71999715A00437E8F /* PhotoViewController.swift */; };
 		388BE3CA1999743500437E8F /* Haiku.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3C91999743500437E8F /* Haiku.swift */; };
+		389FF7EC199E771D008F140B /* PinterestButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 389FF7EB199E771D008F140B /* PinterestButton.m */; };
 		38BB36D4199BE960004E76DA /* CallOutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BB36D3199BE960004E76DA /* CallOutController.swift */; };
 		38CBF01D199A7DB1002652C4 /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 38CBF018199A7DB1002652C4 /* Circle.png */; };
 		38CBF01E199A7DB1002652C4 /* Polygon.png in Resources */ = {isa = PBXBuildFile; fileRef = 38CBF019199A7DB1002652C4 /* Polygon.png */; };
@@ -40,6 +43,9 @@
 /* Begin PBXFileReference section */
 		3818C14D199D7CFB00CC75A1 /* PhotoSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectionViewController.swift; sourceTree = "<group>"; };
 		3839A7E4199D71A0006EFA7D /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		3877A470199E684400E53963 /* Pinterest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pinterest.framework; sourceTree = "<group>"; };
+		3877A472199E684400E53963 /* PinterestSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PinterestSDKResources.bundle; sourceTree = "<group>"; };
+		3877A475199E68B400E53963 /* Enso-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Enso-Bridging-Header.h"; sourceTree = "<group>"; };
 		388BE39E19996B9900437E8F /* Enso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Enso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		388BE3A219996B9900437E8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		388BE3A319996B9900437E8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +58,8 @@
 		388BE3C51999713D00437E8F /* HaikuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HaikuViewController.swift; sourceTree = "<group>"; };
 		388BE3C71999715A00437E8F /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		388BE3C91999743500437E8F /* Haiku.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Haiku.swift; sourceTree = "<group>"; };
+		389FF7EA199E771D008F140B /* PinterestButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinterestButton.h; sourceTree = "<group>"; };
+		389FF7EB199E771D008F140B /* PinterestButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinterestButton.m; sourceTree = "<group>"; };
 		38BB36D3199BE960004E76DA /* CallOutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallOutController.swift; sourceTree = "<group>"; };
 		38CBF018199A7DB1002652C4 /* Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle.png; sourceTree = "<group>"; };
 		38CBF019199A7DB1002652C4 /* Polygon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Polygon.png; sourceTree = "<group>"; };
@@ -67,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3877A473199E684400E53963 /* Pinterest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,12 +107,30 @@
 			name = "Framework Controllers";
 			sourceTree = "<group>";
 		};
+		3877A46F199E684400E53963 /* Pinterest.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				3877A470199E684400E53963 /* Pinterest.framework */,
+				3877A471199E684400E53963 /* Resources */,
+			);
+			path = Pinterest.embeddedframework;
+			sourceTree = "<group>";
+		};
+		3877A471199E684400E53963 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3877A472199E684400E53963 /* PinterestSDKResources.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		388BE39519996B9900437E8F = {
 			isa = PBXGroup;
 			children = (
 				388BE3A019996B9900437E8F /* Enso */,
 				388BE3B319996B9900437E8F /* EnsoTests */,
 				388BE39F19996B9900437E8F /* Products */,
+				3877A46F199E684400E53963 /* Pinterest.embeddedframework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				388BE3A319996B9900437E8F /* AppDelegate.swift */,
+				3877A475199E68B400E53963 /* Enso-Bridging-Header.h */,
 				388BE3C119996CCA00437E8F /* Model */,
 				388BE3C019996CC400437E8F /* Controller */,
 				388BE3C219996CD900437E8F /* View */,
@@ -180,6 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				388BE3A719996B9900437E8F /* Main.storyboard */,
+				389FF7EA199E771D008F140B /* PinterestButton.h */,
+				389FF7EB199E771D008F140B /* PinterestButton.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -283,6 +313,7 @@
 				38CBF01E199A7DB1002652C4 /* Polygon.png in Resources */,
 				388BE3AB19996B9900437E8F /* Images.xcassets in Resources */,
 				38CBF021199A7DB1002652C4 /* Triangle.png in Resources */,
+				3877A474199E684400E53963 /* PinterestSDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				389FF7EC199E771D008F140B /* PinterestButton.m in Sources */,
 				388BE3C41999711E00437E8F /* ShareViewController.swift in Sources */,
 				388BE3C61999713D00437E8F /* HaikuViewController.swift in Sources */,
 				38BB36D4199BE960004E76DA /* CallOutController.swift in Sources */,
@@ -427,9 +459,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pinterest.embeddedframework",
+				);
 				INFOPLIST_FILE = Enso/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Enso/Enso-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -438,9 +477,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pinterest.embeddedframework",
+				);
 				INFOPLIST_FILE = Enso/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Enso/Enso-Bridging-Header.h";
 			};
 			name = Release;
 		};
