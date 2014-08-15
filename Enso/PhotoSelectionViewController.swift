@@ -46,7 +46,15 @@ class PhotoSelectionViewController: UIViewController, UICollectionViewDataSource
 	}
 	
 	func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
+//		NSNotificationCenter.defaultCenter().postNotificationName("selectedPhoto", object: self, userInfo: NSDictionary(object: fetchResults[indexPath.item], forKey: "selectedPhoto"))
 		
+		var sendingAsset = NSDictionary(object: fetchResults[indexPath.item], forKey: "asset")
+		
+//		NSNotificationCenter.defaultCenter().postNotificationName(<#aName: String!#>, object: self, userInfo: <#[NSObject : AnyObject]!#>)
+		
+		self.dismissViewControllerAnimated(true, completion: { () -> Void in
+			
+		})
 	}
 	
 }

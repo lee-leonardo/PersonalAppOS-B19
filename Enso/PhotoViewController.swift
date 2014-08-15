@@ -47,6 +47,7 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 		var cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
 		
 		chooseActionSheet.addAction(selectPhoto)
+		chooseActionSheet.addAction(photoLibrary)
 		chooseActionSheet.addAction(cancel)
 		
 		return chooseActionSheet
@@ -157,19 +158,14 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 	func photoSelected(asset: PHAsset) {
 		self.photoController.asset = asset
 		//Have photoController generate the new UIImage and then give it to this controller.
+		self.photoController.requestPHAsset(selectedImageView.frame.width, frameHeight: selectedImageView.frame.height)
 		
 	}
 	
 //MARK: Segue
-//	override func performSegueWithIdentifier(identifier: String!, sender: AnyObject!) {
-//		if identifier == "PhotoLibrary" {
-//			var photoLibrary =
-			
-//			self.presentViewController(photoLibrary, animated: true, completion: nil)
-//		}
-//	}
 	override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
 		if segue.identifier == "PhotoLibrary" {
+			//println("This fired off normally!")
 			var destination = segue.destinationViewController as PhotoSelectionViewController
 			destination.fetchResults = self.photoController.fetchResult
 			destination.delegate = self

@@ -21,10 +21,14 @@ class PhotosFrameworkController {
 	var context = CIContext(options: nil)
 	
 	let filterLabels = ["Sepia", "Vibrance", "Noir", "Neon", "Monet", "Seurat"]
-	let filterLibrary = ["Sepia":"CISepiaTone", "Vibrance":"", "Noir":""]
+	let filterLibrary = ["Sepia Tone":"CISepiaTone", "Vibrance":"CIVibrance", "Photo Effect Noir":"CIPhotoEffectNoir"]
 	
-	init (){
+	init(){
 		self.fetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "photoLibraryPhotoSelected:", name: "PhotoSelected", object: nil)
+	}
+	deinit {
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: "PhotoSelected", object: nil)
 	}
 
 //MARK: PHAsset Fetch requests
@@ -111,6 +115,12 @@ class PhotosFrameworkController {
 		default:
 			completionHandler(PHPhotoLibrary.authorizationStatus())
 		}
+	}
+	
+	
+//MARK: Target-Action
+	func photoLibraryPhotoSelected(sender: AnyObject!) {
+		
 	}
 	
 }
