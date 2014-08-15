@@ -15,18 +15,26 @@ class PhotosFrameworkController {
 	let ensoFormatVersion = "0.1"
 	
 	var asset : PHAsset?
-	var fetchResult : PHFetchResult!
+	var imageFetchResult : PHFetchResult!
 	var photoManager = PHCachingImageManager()
 	var requestedImage : CIImage?
 	var context = CIContext(options: nil)
 	
 	let filterLabels = ["Sepia", "Vibrance", "Noir", "Neon", "Monet", "Seurat"]
 	let filterLibrary = ["Sepia Tone":"CISepiaTone", "Vibrance":"CIVibrance", "Photo Effect Noir":"CIPhotoEffectNoir"]
-	
-	init(){
-		self.fetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: nil)
-	}
 
+//MARK: Init
+	init(){
+		self.imageFetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "assetSelected:", name: "PHAssetRequest", object: nil)
+	}
+	deinit {
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: "PHAssetRequest", object: nil)
+	}
+	
+//MARK: 
+	
+	
 //MARK: PHAsset Fetch requests
 	func requestPHAsset(frameWidth : CGFloat, frameHeight : CGFloat) {
 		self.photoManager.requestImageForAsset(asset, targetSize: CGSize(width: frameWidth, height: frameHeight), contentMode: PHImageContentMode.AspectFill, options: nil) {
@@ -113,7 +121,6 @@ class PhotosFrameworkController {
 		}
 	}
 	
-	
 //MARK: Target-Action
 	func assetSelected(sender: AnyObject!) {
 		println("Observer received!")
@@ -127,16 +134,9 @@ class PhotosFrameworkController {
 					println("Asset has successfully been retrieved!")
 					
 					self.asset = assetReceived
+					NSNotificationCenter.defaultCenter().postNotificationName("AssetRequestFinished", object: self)
 				}
 			}
 		}
 	}
 }
-
-
-
-
-
-
-
-

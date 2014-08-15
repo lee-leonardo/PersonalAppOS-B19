@@ -51,15 +51,12 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 		
 		return chooseActionSheet
 		
-		
 	}
 	
 //MARK: View methods
     override func viewDidLoad() {
         super.viewDidLoad()
-		
 		self.view.backgroundColor = UIColor(hue: 120 / 360 , saturation: 0.5, brightness: 1, alpha: 0.2)
-
 		
 		//println("Photo controller loaded.")
 		self.selectedImageView.layer.borderWidth = 4.0
@@ -89,14 +86,13 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 		}
 		//println("Should've added self as an observer")
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: "imageViewChanged:", name: "ImageSelectedNotification", object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self.photoController, selector: "assetSelected:", name: "PHAssetRequest", object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "photoControllerAssetChanged:", name: "AssetRequestFinished", object: self.photoController)
 
 	}
 	override func viewDidDisappear(animated: Bool) {
 		super.viewDidDisappear(animated)
 		//println("This is a photo view disappearing!")
 		NSNotificationCenter.defaultCenter().removeObserver(self, name: "ImageSelectedNotification", object: nil)
-		NSNotificationCenter.defaultCenter().removeObserver(self.photoController, name: "PHAssetRequest", object: nil)
 	}
 	
 //MARK: UIImagePickerController
@@ -111,6 +107,7 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 				self.selectedImageView.image = self.selectedImage
 				//println("Should shoot notification to main")
 				NSNotificationCenter.defaultCenter().postNotificationName("ImageSelectedNotification", object: self.selectedImage)
+				//Below is not needed as the notification that is fire will send the information to the delegatee.
 				//self.delegate!.photoSelected(self.selectedImage!)
 			})
 		})
@@ -158,11 +155,22 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 		if segue.identifier == "PhotoLibrary" {
 			//println("This fired off normally!")
 			var destination = segue.destinationViewController as PhotoSelectionViewController
-			destination.fetchResults = self.photoController.fetchResult
+			destination.fetchResults = self.photoController.imageFetchResult
 		}
 	}
 	
 //MARK: Target-Action
+	func photoControllerAssetChanged(sender: AnyObject) {
+		println("Asset Changed fired!")
+		
+		
+//		if self.photoController.requestedImage != nil {
+//			self.selectedImage = UIImage(CIImage: self.photoController.requestedImage)
+//		}
+//		self.photoController.requestedImage
+//		NSNotificationCenter.defaultCenter().postNotificationName("ImageSelectedNotification", object: self.selectedImage)
+	
+	}
 	func imageViewChanged(sender: AnyObject!) {
 		//println("This works!")
 		self.delegate?.photoSelected(selectedImage!)

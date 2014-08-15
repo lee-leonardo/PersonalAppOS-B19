@@ -10,9 +10,4 @@ import Foundation
 
 class NetworkController {
 	
-	
-	
-	
-	
-	
 }
