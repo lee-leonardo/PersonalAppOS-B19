@@ -12,7 +12,9 @@ import Social
 class ShareViewController: UIViewController {
 	
 	var haiku : Haiku?
-
+	
+//MARK:
+//MARK: IBAction
 	@IBAction func twitterButton(sender: AnyObject) {
 		NSNotificationCenter.defaultCenter().postNotificationName("ShareRequest", object: nil)
 		//println("Haiku text: \(haiku?.lines)")
@@ -82,6 +84,8 @@ class ShareViewController: UIViewController {
 //		if SLComposeViewController.isAvailableForServiceType()
 	}
 	
+//MARK:
+//MARK: View methods
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.view.backgroundColor = UIColor(hue: 240 / 360, saturation: 0.5, brightness: 1, alpha: 0.2)
@@ -105,6 +109,7 @@ class ShareViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 	
+//MARK:
 //MARK: Target-Action
 	func receiveHaiku(sender: AnyObject! ) {
 		//println("receiveHaikuFired")
@@ -131,7 +136,3 @@ class ShareViewController: UIViewController {
 //		pinterest
 	}
 }
-
-
-
-

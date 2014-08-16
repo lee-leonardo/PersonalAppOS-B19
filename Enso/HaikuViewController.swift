@@ -18,6 +18,7 @@ class HaikuViewController: UIViewController, UITextViewDelegate {
 	@IBOutlet weak var syllableCount: UILabel!
 	var delegate : HaikuDelegate?
 
+//MARK:
 //MARK: HaikuController methods
 	func randomStartHaiku() {
 		var random = arc4random_uniform(10)
@@ -51,14 +52,6 @@ class HaikuViewController: UIViewController, UITextViewDelegate {
         super.didReceiveMemoryWarning()
     }
 	
-//MARK: UITextFieldDelegate
-	func textFieldShouldReturn(textField: UITextField!) -> Bool {
-		var haiku = Haiku(haiku: haikuTextView.text)
-		//haiku function
-		
-		return true
-	}
-
 //MARK: Touch methods
 	override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
 		for control in self.view.subviews {
@@ -67,7 +60,17 @@ class HaikuViewController: UIViewController, UITextViewDelegate {
 			}
 		}
 	}
+	
+//MARK:
+//MARK: UITextFieldDelegate
+	func textFieldShouldReturn(textField: UITextField!) -> Bool {
+		var haiku = Haiku(haiku: haikuTextView.text)
+		//haiku function
+		
+		return true
+	}
 
+//MARK:
 //MARK: Target-Action
 	func textViewChanged(sender: AnyObject!) {
 		self.delegate?.haikuTextChanged(haikuTextView.text)

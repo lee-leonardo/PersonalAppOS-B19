@@ -32,6 +32,7 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 	var delegate : PhotoDelegate?
 	var filters = ["Sepia Tone", "Faded Photo"]
 
+//MARK:
 //MARK: ActionSheet
 	func buildActionSheet() -> UIAlertController {
 		var chooseActionSheet = UIAlertController(title: "Get photo from", message: "Please choose a place to get a photo from", preferredStyle: UIAlertControllerStyle.ActionSheet)
@@ -95,6 +96,7 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 		NSNotificationCenter.defaultCenter().removeObserver(self, name: "ImageSelectedNotification", object: nil)
 	}
 	
+//MARK:
 //MARK: UIImagePickerController
 	func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]!) {
 		var returnedImage = info[UIImagePickerControllerEditedImage] as UIImage
@@ -149,7 +151,7 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 	func pickerView(pickerView: UIPickerView!, numberOfRowsInComponent component: Int) -> Int {
 		return self.photoController.filterLabels.count + 1
 	}
-	
+//MARK:
 //MARK: Segue
 	override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
 		if segue.identifier == "PhotoLibrary" {
@@ -158,7 +160,7 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 			destination.fetchResults = self.photoController.imageFetchResult
 		}
 	}
-	
+//MARK:
 //MARK: Target-Action
 	func photoControllerAssetChanged(sender: AnyObject) {
 		println("Asset Changed fired!")

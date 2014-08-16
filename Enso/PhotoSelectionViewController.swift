@@ -15,7 +15,8 @@ class PhotoSelectionViewController: UIViewController, UICollectionViewDataSource
 	
 	var fetchResults : PHFetchResult!
 	var photoManager : PHCachingImageManager!
-	
+
+//MARK:
 //MARK: View methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class PhotoSelectionViewController: UIViewController, UICollectionViewDataSource
         super.didReceiveMemoryWarning()
     }
 	
+//MARK:
 //MARK: UICollectionView
 	func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
 		var cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as UICollectionViewCell
