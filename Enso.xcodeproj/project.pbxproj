@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3818C14E199D7CFB00CC75A1 /* PhotoSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3818C14D199D7CFB00CC75A1 /* PhotoSelectionViewController.swift */; };
 		3839A7E5199D71A0006EFA7D /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3839A7E4199D71A0006EFA7D /* NetworkController.swift */; };
+		38768EF819A1A6560020FBF2 /* PhotoLibraryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38768EF719A1A6560020FBF2 /* PhotoLibraryCell.swift */; };
 		3877A473199E684400E53963 /* Pinterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3877A470199E684400E53963 /* Pinterest.framework */; };
 		3877A474199E684400E53963 /* PinterestSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3877A472199E684400E53963 /* PinterestSDKResources.bundle */; };
 		388BE3A419996B9900437E8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3A319996B9900437E8F /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		3818C14D199D7CFB00CC75A1 /* PhotoSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectionViewController.swift; sourceTree = "<group>"; };
 		3839A7E4199D71A0006EFA7D /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		38768EF719A1A6560020FBF2 /* PhotoLibraryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryCell.swift; sourceTree = "<group>"; };
 		3877A470199E684400E53963 /* Pinterest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pinterest.framework; sourceTree = "<group>"; };
 		3877A472199E684400E53963 /* PinterestSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PinterestSDKResources.bundle; sourceTree = "<group>"; };
 		3877A475199E68B400E53963 /* Enso-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Enso-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				388BE3A319996B9900437E8F /* AppDelegate.swift */,
+				388BE3A719996B9900437E8F /* Main.storyboard */,
 				3877A475199E68B400E53963 /* Enso-Bridging-Header.h */,
 				388BE3C119996CCA00437E8F /* Model */,
 				388BE3C019996CC400437E8F /* Controller */,
@@ -215,7 +218,7 @@
 		388BE3C219996CD900437E8F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				388BE3A719996B9900437E8F /* Main.storyboard */,
+				38768EF719A1A6560020FBF2 /* PhotoLibraryCell.swift */,
 				389FF7EA199E771D008F140B /* PinterestButton.h */,
 				389FF7EB199E771D008F140B /* PinterestButton.m */,
 			);
@@ -347,6 +350,7 @@
 				388BE3A419996B9900437E8F /* AppDelegate.swift in Sources */,
 				388BE3CA1999743500437E8F /* Haiku.swift in Sources */,
 				3818C14E199D7CFB00CC75A1 /* PhotoSelectionViewController.swift in Sources */,
+				38768EF819A1A6560020FBF2 /* PhotoLibraryCell.swift in Sources */,
 				388BE3C81999715A00437E8F /* PhotoViewController.swift in Sources */,
 				38CBF02A199AC041002652C4 /* MainViewController.swift in Sources */,
 				3839A7E5199D71A0006EFA7D /* NetworkController.swift in Sources */,

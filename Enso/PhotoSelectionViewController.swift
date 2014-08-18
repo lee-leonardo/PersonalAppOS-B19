@@ -30,23 +30,24 @@ class PhotoSelectionViewController: UIViewController, UICollectionViewDataSource
 //MARK:
 //MARK: UICollectionView
 	func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
-		var cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as UICollectionViewCell
+		var cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath) as PhotoLibraryCell
+//		cell.photoLibraryImage.image
 		cell.backgroundColor = UIColor.blueColor()
 		
 		return cell
 	}
 	
 	func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
-		return 10
+		return self.fetchResults.count
 	}
 	
 	func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
 		
 		var sendingAsset = NSDictionary(object: fetchResults[indexPath.item], forKey: "asset")
-		NSNotificationCenter.defaultCenter().postNotificationName("PHAssetRequest", object: self, userInfo: sendingAsset)
 		
 		self.dismissViewControllerAnimated(true, completion: { () -> Void in
-			
+			//NSNotificationCenter.defaultCenter().postNotificationName("PHAssetRequest", object: self, userInfo: sendingAsset)
+
 		})
 	}
 	

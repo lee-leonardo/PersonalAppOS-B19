@@ -136,6 +136,7 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 		if selectedImage != nil {
 			if row == 0 {
 				println("No filter selected")
+				self.selectedImageView.image = self.selectedImage
 			} else {
 				var filterName = self.photoController.filterLabels[row - 1]
 				println("filter name is: \(filterName)")
@@ -144,7 +145,7 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 					//println("this should fire?")
 					
 //					var sendImage = CIImage(image: self.selectedImage)
-				var sendImage = CIImage(image: self.selectedImageView.image)
+				var sendImage = CIImage(image: self.selectedImage)
 					var imageFilter = self.photoController.temporaryFilter(filterName, image: sendImage)
 				self.selectedImageView.image = UIImage(CIImage: imageFilter.outputImage)
 
