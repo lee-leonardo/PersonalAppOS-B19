@@ -20,10 +20,13 @@ class PhotosFrameworkController {
 	var requestedImage : CIImage?
 	var context = CIContext(options: nil)
 	
-	let filterLabels = ["Sepia Tone", "Vibrance", "Photo Effect Noir", "Monet", "Seurat"]
+	let filterLabels = ["Sepia Tone", "Vibrance", "Photo Effect Noir"]//, "Monet", "Seurat"]
 	let defaultFilters = ["Sepia Tone":"CISepiaTone", "Vibrance":"CIVibrance", "Photo Effect Noir":"CIPhotoEffectNoir"]
 	let filterLibrary: Dictionary<String, CIFilter>?
 
+//	var photoFilter : CIFilter?
+
+	
 //MARK:
 //MARK: Init
 	init(){
@@ -78,9 +81,6 @@ class PhotosFrameworkController {
 			var outputImage = filter.outputImage
 			
 			
-			
-			
-			
 			//Finalizing
 			let cgImage = self.context.createCGImage(outputImage, fromRect: outputImage.extent())
 			let finishedImage = UIImage(CGImage: cgImage)
@@ -133,16 +133,29 @@ class PhotosFrameworkController {
 	func cacheFilters() {
 		
 	}
+	func temporaryFilter(name: String, image: CIImage) -> CIFilter {
+		println("This should fire")
+		
+		var filterName = defaultFilters[name]
+		
+		var filter = CIFilter(name: filterName, withInputParameters: [ kCIInputImageKey : image ])
+		filter.setDefaults()
+		
+		return filter			
+
+	}
 	func applyFilter(filter name: String, image: CIImage ) -> CIFilter {
-		var filter = CIFilter()
+		
+		println("This should fire")
+		
+		
 		
 		if name == "Sepia Tone" || name == "Vibrance" || name == "Photo Effect Noir" {
 			var filterName = defaultFilters[name]
 			
-			filter = CIFilter(name: filterName)
+			var filter = CIFilter(name: filterName)
 			filter.setDefaults()
 			
-			return filter
 			
 		} else {
 			if name == "Monet" {
@@ -156,9 +169,12 @@ class PhotosFrameworkController {
 				//Lacks colomatrix info
 				//inputRVector = [1, 0.2, 0, 0]
 				//inputGVectore = [0, 1, 0.1, 0]
-				//inputBVector = [0.05, 0, 1, 0]
+				//inputBVector = [0.05, 0, 1, 0] 
 				//inputAVector = [0, 0, 0, 1]
 				//inputBiasVector = [0 0 0 0]
+				
+				
+				return colorMatrix
 				
 			} else if name == "Seurat" {
 				
@@ -175,15 +191,13 @@ class PhotosFrameworkController {
 				var median2 = CIFilter(name: "CIMedianFilter", withInputParameters: [ kCIInputImageKey : median1.outputImage ])
 
 				
-				
+				return median2
 				
 				
 			}
-			//Something
-			filter.setDefaults()
 			
-			return filter
 		}
+		return CIFilter()
 	}
 	
 //MARK:

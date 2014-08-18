@@ -16,6 +16,9 @@ class ShareViewController: UIViewController {
 //MARK:
 //MARK: IBAction
 	@IBAction func twitterButton(sender: AnyObject) {
+		self.loadSpinner.hidden = false
+		self.loadSpinner.startAnimating()
+		
 		NSNotificationCenter.defaultCenter().postNotificationName("ShareRequest", object: nil)
 		//println("Haiku text: \(haiku?.lines)")
 		
@@ -30,6 +33,7 @@ class ShareViewController: UIViewController {
 					tweetSheet.addImage(self.haiku?.photo)
 
 				}
+				
 				self.presentViewController(tweetSheet, animated: true, completion: nil)
 			}
 		} else {
@@ -38,17 +42,19 @@ class ShareViewController: UIViewController {
 			let okay = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Cancel, handler: nil)
 			cannotAlert.addAction(okay)
 			
+			
 			self.presentViewController(cannotAlert, animated: true, completion: nil)
 		}
 		
-		
-
+		self.loadSpinner.stopAnimating()
 		
 	}
 	
 	@IBAction func facebookButton(sender: AnyObject) {
+		self.loadSpinner.hidden = false
+		self.loadSpinner.startAnimating()
+		
 		NSNotificationCenter.defaultCenter().postNotificationName("ShareRequest", object: nil)
-
 		if self.haiku != nil {
 			
 			if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
@@ -59,6 +65,7 @@ class ShareViewController: UIViewController {
 					shareSheet.addImage(self.haiku?.photo)
 				}
 				
+				
 				self.presentViewController(shareSheet, animated: true, completion: nil)
 			}
 			
@@ -68,8 +75,12 @@ class ShareViewController: UIViewController {
 			let okay = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Cancel, handler: nil)
 			cannotAlert.addAction(okay)
 			
+			
 			self.presentViewController(cannotAlert, animated: true, completion: nil)
 		}
+		
+		self.loadSpinner.stopAnimating()
+
 		
 		
 	}
@@ -96,6 +107,12 @@ class ShareViewController: UIViewController {
 		super.viewWillAppear(animated)
 		//println("View Should've appeared")
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: "receiveHaiku:", name: "ShareHaiku", object: nil)
+
+		self.loadSpinner.hidesWhenStopped = true
+//		self.loadSpinner.center = self.view.center
+		self.loadSpinner.center = CGPointMake(self.view.frame.size.width / 2 , self.view.frame.size.height / 2)
+		self.view.addSubview(self.loadSpinner)
+
 	}
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
@@ -135,4 +152,9 @@ class ShareViewController: UIViewController {
 	func pinIt(sender: AnyObject! ) {
 //		pinterest
 	}
+	
+//MARK:
+//MARK: Loading Indicator
+	var loadSpinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+	
 }

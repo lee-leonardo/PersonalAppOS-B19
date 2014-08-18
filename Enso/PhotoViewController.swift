@@ -69,7 +69,6 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 		self.photoPicker.allowsEditing = true
 		self.photoPicker.delegate = self
 
-		
 		var longPress = UILongPressGestureRecognizer(target: self, action: "selectPhoto:")
 		//longPress.minimumPressDuration = 1.5
 		selectedImageView.addGestureRecognizer(longPress)
@@ -86,16 +85,15 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 			self.filterPickerView.userInteractionEnabled = false
 		}
 		//println("Should've added self as an observer")
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "imageViewChanged:", name: "ImageSelectedNotification", object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "imageViewChanged:", name: "ImageChangedNotification", object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: "photoControllerAssetChanged:", name: "AssetRequestFinished", object: self.photoController)
 
 	}
 	override func viewDidDisappear(animated: Bool) {
 		super.viewDidDisappear(animated)
 		//println("This is a photo view disappearing!")
-		NSNotificationCenter.defaultCenter().removeObserver(self, name: "ImageSelectedNotification", object: nil)
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: "ImageChangedNotification", object: nil)
 	}
-	
 //MARK:
 //MARK: UIImagePickerController
 	func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]!) {
@@ -108,13 +106,13 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 			NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
 				self.selectedImageView.image = self.selectedImage
 				//println("Should shoot notification to main")
-				NSNotificationCenter.defaultCenter().postNotificationName("ImageSelectedNotification", object: self.selectedImage)
+				NSNotificationCenter.defaultCenter().postNotificationName("ImageChangedNotification", object: self.selectedImage)
 				//Below is not needed as the notification that is fire will send the information to the delegatee.
 				//self.delegate!.photoSelected(self.selectedImage!)
 			})
 		})
 	}
-	
+//MARK:
 //MARK: UIPickerViewDelegate & UIPickerViewDataSource
 	func pickerView(pickerView: UIPickerView!, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString! {
 		
@@ -139,7 +137,18 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 			if row == 0 {
 				println("No filter selected")
 			} else {
-				println("filter name is: \(self.photoController.filterLabels[row - 1])")
+				var filterName = self.photoController.filterLabels[row - 1]
+				println("filter name is: \(filterName)")
+				
+				//if row < 5 {
+					//println("this should fire?")
+					
+//					var sendImage = CIImage(image: self.selectedImage)
+				var sendImage = CIImage(image: self.selectedImageView.image)
+					var imageFilter = self.photoController.temporaryFilter(filterName, image: sendImage)
+				self.selectedImageView.image = UIImage(CIImage: imageFilter.outputImage)
+
+				//}
 			}
 		}
 	}
@@ -165,12 +174,11 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 	func photoControllerAssetChanged(sender: AnyObject) {
 		println("Asset Changed fired!")
 		
-		
 //		if self.photoController.requestedImage != nil {
 //			self.selectedImage = UIImage(CIImage: self.photoController.requestedImage)
 //		}
 //		self.photoController.requestedImage
-//		NSNotificationCenter.defaultCenter().postNotificationName("ImageSelectedNotification", object: self.selectedImage)
+//		NSNotificationCenter.defaultCenter().postNotificationName("ImageChangedNotification", object: self.selectedImage)
 	
 	}
 	func imageViewChanged(sender: AnyObject!) {

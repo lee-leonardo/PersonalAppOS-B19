@@ -107,6 +107,13 @@
 			name = "Framework Controllers";
 			sourceTree = "<group>";
 		};
+		38768EF419A17E280020FBF2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		3877A46F199E684400E53963 /* Pinterest.embeddedframework */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +158,7 @@
 				388BE3C119996CCA00437E8F /* Model */,
 				388BE3C019996CC400437E8F /* Controller */,
 				388BE3C219996CD900437E8F /* View */,
+				38768EF419A17E280020FBF2 /* Extensions */,
 				388BE3AA19996B9900437E8F /* Images.xcassets */,
 				38CBF017199A7DB1002652C4 /* Stock icons */,
 				388BE3A119996B9900437E8F /* Supporting Files */,
