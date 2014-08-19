@@ -11,13 +11,13 @@ import Social
 
 class ShareViewController: UIViewController {
 	
+	var networkController = NetworkController()
 	var haiku : Haiku?
+
 	
 //MARK:
 //MARK: IBAction
 	@IBAction func twitterButton(sender: AnyObject) {
-		self.loadSpinner.hidden = false
-		self.loadSpinner.startAnimating()
 		
 		NSNotificationCenter.defaultCenter().postNotificationName("ShareRequest", object: nil)
 		//println("Haiku text: \(haiku?.lines)")
@@ -46,13 +46,9 @@ class ShareViewController: UIViewController {
 			self.presentViewController(cannotAlert, animated: true, completion: nil)
 		}
 		
-		self.loadSpinner.stopAnimating()
-		
 	}
 	
 	@IBAction func facebookButton(sender: AnyObject) {
-		self.loadSpinner.hidden = false
-		self.loadSpinner.startAnimating()
 		
 		NSNotificationCenter.defaultCenter().postNotificationName("ShareRequest", object: nil)
 		if self.haiku != nil {
@@ -78,21 +74,32 @@ class ShareViewController: UIViewController {
 			
 			self.presentViewController(cannotAlert, animated: true, completion: nil)
 		}
-		
-		self.loadSpinner.stopAnimating()
-
-		
-		
 	}
 	
 	@IBAction func instagramButton(sender: AnyObject) {
 		println("Need to implement")
+		
+		var instagramURL = NSURL(fileURLWithPath: "instagram://")
+		
+		if UIApplication.sharedApplication().canOpenURL(instagramURL) {
+			UIApplication.sharedApplication().openURL(instagramURL)
+		} else {
+			var unInstagram = UIAlertController(title: "Cannot access Instagram", message: "Either you cannot access Instagram or do not have it installed", preferredStyle: UIAlertControllerStyle.Alert)
+			var okay = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Cancel, handler: nil)
+			unInstagram.addAction(okay)
+			self.presentViewController(unInstagram, animated: true, completion: nil)
+		}
+		
+		
 	}
 	
 	
 	@IBAction func pinterestButton(sender: AnyObject) {
 		println("Need to implement")
 //		if SLComposeViewController.isAvailableForServiceType()
+	}
+	func pinIt(sender: AnyObject! ) {
+		//		pinterest
 	}
 	
 //MARK:
@@ -107,11 +114,6 @@ class ShareViewController: UIViewController {
 		super.viewWillAppear(animated)
 		//println("View Should've appeared")
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: "receiveHaiku:", name: "ShareHaiku", object: nil)
-
-		self.loadSpinner.hidesWhenStopped = true
-//		self.loadSpinner.center = self.view.center
-		self.loadSpinner.center = CGPointMake(self.view.frame.size.width / 2 , self.view.frame.size.height / 2)
-		self.view.addSubview(self.loadSpinner)
 
 	}
 	override func viewDidAppear(animated: Bool) {
@@ -149,12 +151,5 @@ class ShareViewController: UIViewController {
 			}
 		}
 	}
-	func pinIt(sender: AnyObject! ) {
-//		pinterest
-	}
-	
-//MARK:
-//MARK: Loading Indicator
-	var loadSpinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
 	
 }

@@ -17,16 +17,8 @@ class HaikuViewController: UIViewController, UITextViewDelegate {
 	@IBOutlet weak var haikuTextView: UITextView!
 	@IBOutlet weak var syllableCount: UILabel!
 	var delegate : HaikuDelegate?
-
-//MARK:
-//MARK: HaikuController methods
-	func randomStartHaiku() {
-		var random = arc4random_uniform(10)
-		self.haikuTextView.text = "The old pond:\na frog jumps in,\nthe sound of water"
-		
-		haikuTextView.resignFirstResponder()
-	}
 	
+//MARK:
 //MARK: View methods
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
@@ -59,6 +51,41 @@ class HaikuViewController: UIViewController, UITextViewDelegate {
 				individualControl.resignFirstResponder()
 			}
 		}
+	}
+	
+//MARK:
+//MARK: HaikuController methods
+	func randomStartHaiku() {
+		var random = arc4random_uniform(10)
+		var randomHaiku : String
+		
+		switch random {
+		case 0:
+			randomHaiku = "The old pond:\na frog jumps in,\nthe sound of water"
+		case 1:
+			randomHaiku = "In nooks and corners\nCold remains:\nFlowers of the plum"
+		case 2:
+			randomHaiku = "Everything I touch\nwith tenderness, alas,\npricks like a bramble."
+		case 3:
+			randomHaiku = "O snail\nClimb Mount Fuji,\nBut slowly, slowly!"
+		case 4:
+			randomHaiku = "Not quite dark yet\nand the stars shining\nabove the withered fields."
+		case 5:
+			randomHaiku = "Listening to the moon,\ngazing at the croaking of frogs\nin a field of ripe rice."
+		case 6:
+			randomHaiku = "A kite floats\nAt the place in the sky\nWhere it floated yesterday."
+		case 7:
+			randomHaiku = "Morning haze:\nas in a painting of a dream,\nmen go their ways."
+		case 8:
+			randomHaiku = "A painting for sale -\nA swallow lets fall a dropping,\nAs it flies away."
+		case 9:
+			randomHaiku = "That snail --\nOne long horn, one short,\nWhat's on his mind?"
+		default:
+			randomHaiku = "The winter moon:\nA temple without a gate,-\nHow high the sky!"
+		}
+		
+		self.haikuTextView.text = randomHaiku
+		haikuTextView.resignFirstResponder()
 	}
 	
 //MARK:

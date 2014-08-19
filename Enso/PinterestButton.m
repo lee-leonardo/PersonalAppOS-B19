@@ -32,7 +32,6 @@
 //		  forControlEvents:UIControlEventTouchUpInside];
 //	
 //	return pinItButton;
-//
 //}
 
 #pragma mark - PinIt

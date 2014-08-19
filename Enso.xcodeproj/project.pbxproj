@@ -21,7 +21,6 @@
 		388BE3C81999715A00437E8F /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3C71999715A00437E8F /* PhotoViewController.swift */; };
 		388BE3CA1999743500437E8F /* Haiku.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3C91999743500437E8F /* Haiku.swift */; };
 		389FF7EC199E771D008F140B /* PinterestButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 389FF7EB199E771D008F140B /* PinterestButton.m */; };
-		38BB36D4199BE960004E76DA /* CallOutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BB36D3199BE960004E76DA /* CallOutController.swift */; };
 		38CBF01D199A7DB1002652C4 /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 38CBF018199A7DB1002652C4 /* Circle.png */; };
 		38CBF01E199A7DB1002652C4 /* Polygon.png in Resources */ = {isa = PBXBuildFile; fileRef = 38CBF019199A7DB1002652C4 /* Polygon.png */; };
 		38CBF01F199A7DB1002652C4 /* Square.png in Resources */ = {isa = PBXBuildFile; fileRef = 38CBF01A199A7DB1002652C4 /* Square.png */; };
@@ -62,7 +61,6 @@
 		388BE3C91999743500437E8F /* Haiku.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Haiku.swift; sourceTree = "<group>"; };
 		389FF7EA199E771D008F140B /* PinterestButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinterestButton.h; sourceTree = "<group>"; };
 		389FF7EB199E771D008F140B /* PinterestButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinterestButton.m; sourceTree = "<group>"; };
-		38BB36D3199BE960004E76DA /* CallOutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallOutController.swift; sourceTree = "<group>"; };
 		38CBF018199A7DB1002652C4 /* Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle.png; sourceTree = "<group>"; };
 		38CBF019199A7DB1002652C4 /* Polygon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Polygon.png; sourceTree = "<group>"; };
 		38CBF01A199A7DB1002652C4 /* Square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Square.png; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 			children = (
 				38CBF022199A9414002652C4 /* PhotosFrameworkController.swift */,
 				3839A7E4199D71A0006EFA7D /* NetworkController.swift */,
-				38BB36D3199BE960004E76DA /* CallOutController.swift */,
 			);
 			name = "Framework Controllers";
 			sourceTree = "<group>";
@@ -345,7 +342,6 @@
 				389FF7EC199E771D008F140B /* PinterestButton.m in Sources */,
 				388BE3C41999711E00437E8F /* ShareViewController.swift in Sources */,
 				388BE3C61999713D00437E8F /* HaikuViewController.swift in Sources */,
-				38BB36D4199BE960004E76DA /* CallOutController.swift in Sources */,
 				38CBF023199A9414002652C4 /* PhotosFrameworkController.swift in Sources */,
 				388BE3A419996B9900437E8F /* AppDelegate.swift in Sources */,
 				388BE3CA1999743500437E8F /* Haiku.swift in Sources */,

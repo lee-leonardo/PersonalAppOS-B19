@@ -10,4 +10,15 @@ import Foundation
 
 class NetworkController {
 	
+	var pinterest : Pinterest?
+	
+	init (){
+		self.pinterest = Pinterest()
+		
+	}
+	
+	
+	
+	
+	
 }

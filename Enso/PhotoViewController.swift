@@ -15,10 +15,8 @@ protocol PhotoDelegate {
 class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 	
 	/*
-	
 	Make a collectionView, there's not something out of the box yet.
 	CI Funhouse play around with it -> Checkout the sample code CIFunhouse for iPhone (iOS).
-	
 	*/
 	
 	@IBOutlet weak var selectedImageView: UIImageView!
@@ -135,21 +133,19 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 	func pickerView(pickerView: UIPickerView!, didSelectRow row: Int, inComponent component: Int) {
 		if selectedImage != nil {
 			if row == 0 {
-				println("No filter selected")
+				//println("No filter selected")
 				self.selectedImageView.image = self.selectedImage
+
 			} else {
 				var filterName = self.photoController.filterLabels[row - 1]
-				println("filter name is: \(filterName)")
+				//println("filter name is: \(filterName)")
 				
-				//if row < 5 {
-					//println("this should fire?")
-					
-//					var sendImage = CIImage(image: self.selectedImage)
 				var sendImage = CIImage(image: self.selectedImage)
 					var imageFilter = self.photoController.temporaryFilter(filterName, image: sendImage)
 				self.selectedImageView.image = UIImage(CIImage: imageFilter.outputImage)
+				NSNotificationCenter.defaultCenter().postNotificationName("ImageChangedNotification", object: self.selectedImage)
 
-				//}
+
 			}
 		}
 	}
@@ -184,7 +180,7 @@ class PhotoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 	}
 	func imageViewChanged(sender: AnyObject!) {
 		//println("This works!")
-		self.delegate?.photoSelected(selectedImage!)
+		self.delegate?.photoSelected(self.selectedImage!)
 	}
 	func selectPhoto(sender: AnyObject) {
 		//println("Long pressed")
