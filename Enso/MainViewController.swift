@@ -13,8 +13,7 @@ class MainViewController: UIViewController, HaikuDelegate, PhotoDelegate {
 	var scrollView  : UIScrollView!
 	var haiku : Haiku?
 	
-//MARK:
-//MARK: View methods
+//MARK: - View methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -77,8 +76,7 @@ class MainViewController: UIViewController, HaikuDelegate, PhotoDelegate {
 		shareController.didMoveToParentViewController(self)
 	}
 	
-//MARK:
-//MARK: Delegates
+//MARK: - Delegates
 	func haikuTextChanged(haikuText: String) {
 		if self.haiku != nil {
 			self.haiku?.lines = haikuText
@@ -92,8 +90,7 @@ class MainViewController: UIViewController, HaikuDelegate, PhotoDelegate {
 		//println("Main received Photo")
 		self.haiku?.photo = selectedImage
 	}
-//MARK:
-//MARK: Target-Action
+//MARK: - Target-Action
 	func shareRequest(sender : AnyObject!) {
 		if self.haiku != nil {
 			//println("Share request received!")

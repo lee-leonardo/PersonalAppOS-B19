@@ -18,8 +18,7 @@ class HaikuViewController: UIViewController, UITextViewDelegate {
 	@IBOutlet weak var syllableCount: UILabel!
 	var delegate : HaikuDelegate?
 	
-//MARK:
-//MARK: View methods
+//MARK: - View methods
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		self.view.backgroundColor = UIColor(hue: 0, saturation: 0.5, brightness: 1, alpha: 0.1)
@@ -44,7 +43,7 @@ class HaikuViewController: UIViewController, UITextViewDelegate {
         super.didReceiveMemoryWarning()
     }
 	
-//MARK: Touch methods
+//MARK: - Touch methods
 	override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
 		for control in self.view.subviews {
 			if let individualControl = control as? UITextView {
@@ -53,8 +52,7 @@ class HaikuViewController: UIViewController, UITextViewDelegate {
 		}
 	}
 	
-//MARK:
-//MARK: HaikuController methods
+//MARK: - HaikuController methods
 	func randomStartHaiku() {
 		var random = arc4random_uniform(10)
 		var randomHaiku : String
@@ -88,8 +86,7 @@ class HaikuViewController: UIViewController, UITextViewDelegate {
 		haikuTextView.resignFirstResponder()
 	}
 	
-//MARK:
-//MARK: UITextFieldDelegate
+//MARK: - UITextFieldDelegate
 	func textFieldShouldReturn(textField: UITextField!) -> Bool {
 		var haiku = Haiku(haiku: haikuTextView.text)
 		//haiku function
@@ -97,8 +94,7 @@ class HaikuViewController: UIViewController, UITextViewDelegate {
 		return true
 	}
 
-//MARK:
-//MARK: Target-Action
+//MARK: - Target-Action
 	func textViewChanged(sender: AnyObject!) {
 		self.delegate?.haikuTextChanged(haikuTextView.text)
 	}

@@ -6,9 +6,13 @@
 //  Copyright (c) 2014 Leonardo Lee. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class NetworkController {
+	/*
+	Primarily going to be used for in-App pinterest support. Something I may get rid of in favor of extensions.
+	*/
+	
 	
 	var pinterest : Pinterest?
 	
@@ -16,6 +20,7 @@ class NetworkController {
 		self.pinterest = Pinterest()
 		
 	}
+	
 	
 	
 	

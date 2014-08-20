@@ -21,6 +21,17 @@
 		388BE3C81999715A00437E8F /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3C71999715A00437E8F /* PhotoViewController.swift */; };
 		388BE3CA1999743500437E8F /* Haiku.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388BE3C91999743500437E8F /* Haiku.swift */; };
 		389FF7EC199E771D008F140B /* PinterestButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 389FF7EB199E771D008F140B /* PinterestButton.m */; };
+		38A8825F19A41F3500EAD582 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A8825E19A41F3500EAD582 /* ShareViewController.swift */; };
+		38A8826119A41F3500EAD582 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38A8826019A41F3500EAD582 /* MainInterface.storyboard */; };
+		38A8826419A41F3500EAD582 /* EnsoShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 38A8825A19A41F3500EAD582 /* EnsoShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		38A8827519A41F5700EAD582 /* DocumentPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A8827419A41F5700EAD582 /* DocumentPickerViewController.swift */; };
+		38A8827719A41F5700EAD582 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38A8827619A41F5700EAD582 /* MainInterface.storyboard */; };
+		38A8828A19A41F5700EAD582 /* EnsoDocumentProvider.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 38A8826F19A41F5700EAD582 /* EnsoDocumentProvider.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		38A8829A19A41F9500EAD582 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A8829919A41F9500EAD582 /* PhotosUI.framework */; };
+		38A8829C19A41F9500EAD582 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A8829B19A41F9500EAD582 /* Photos.framework */; };
+		38A882A119A41F9500EAD582 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A882A019A41F9500EAD582 /* PhotoEditingViewController.swift */; };
+		38A882A319A41F9500EAD582 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38A882A219A41F9500EAD582 /* MainInterface.storyboard */; };
+		38A882A619A41F9500EAD582 /* EnsoPhotoEditingExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 38A8829719A41F9500EAD582 /* EnsoPhotoEditingExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		38CBF01D199A7DB1002652C4 /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 38CBF018199A7DB1002652C4 /* Circle.png */; };
 		38CBF01E199A7DB1002652C4 /* Polygon.png in Resources */ = {isa = PBXBuildFile; fileRef = 38CBF019199A7DB1002652C4 /* Polygon.png */; };
 		38CBF01F199A7DB1002652C4 /* Square.png in Resources */ = {isa = PBXBuildFile; fileRef = 38CBF01A199A7DB1002652C4 /* Square.png */; };
@@ -38,7 +49,65 @@
 			remoteGlobalIDString = 388BE39D19996B9900437E8F;
 			remoteInfo = Enso;
 		};
+		38A8826219A41F3500EAD582 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 388BE39619996B9900437E8F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 38A8825919A41F3500EAD582;
+			remoteInfo = EnsoShareExtension;
+		};
+		38A8826519A41F3500EAD582 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 388BE39619996B9900437E8F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 38A8825919A41F3500EAD582;
+			remoteInfo = EnsoShareExtension;
+		};
+		38A8828819A41F5700EAD582 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 388BE39619996B9900437E8F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 38A8826E19A41F5700EAD582;
+			remoteInfo = EnsoDocumentProvider;
+		};
+		38A8828B19A41F5700EAD582 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 388BE39619996B9900437E8F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 38A8826E19A41F5700EAD582;
+			remoteInfo = EnsoDocumentProvider;
+		};
+		38A882A419A41F9500EAD582 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 388BE39619996B9900437E8F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 38A8829619A41F9500EAD582;
+			remoteInfo = EnsoPhotoEditingExtension;
+		};
+		38A882A719A41F9500EAD582 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 388BE39619996B9900437E8F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 38A8829619A41F9500EAD582;
+			remoteInfo = EnsoPhotoEditingExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		38A8826A19A41F3500EAD582 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				38A8828A19A41F5700EAD582 /* EnsoDocumentProvider.appex in Embed App Extensions */,
+				38A8826419A41F3500EAD582 /* EnsoShareExtension.appex in Embed App Extensions */,
+				38A882A619A41F9500EAD582 /* EnsoPhotoEditingExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3818C14D199D7CFB00CC75A1 /* PhotoSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectionViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +130,24 @@
 		388BE3C91999743500437E8F /* Haiku.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Haiku.swift; sourceTree = "<group>"; };
 		389FF7EA199E771D008F140B /* PinterestButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinterestButton.h; sourceTree = "<group>"; };
 		389FF7EB199E771D008F140B /* PinterestButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinterestButton.m; sourceTree = "<group>"; };
+		38A8825A19A41F3500EAD582 /* EnsoShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EnsoShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		38A8825D19A41F3500EAD582 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38A8825E19A41F3500EAD582 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		38A8826019A41F3500EAD582 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		38A8826F19A41F5700EAD582 /* EnsoDocumentProvider.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EnsoDocumentProvider.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		38A8827219A41F5700EAD582 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38A8827319A41F5700EAD582 /* EnsoDocumentProvider.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = EnsoDocumentProvider.entitlements; sourceTree = "<group>"; };
+		38A8827419A41F5700EAD582 /* DocumentPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPickerViewController.swift; sourceTree = "<group>"; };
+		38A8827619A41F5700EAD582 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		38A8827F19A41F5700EAD582 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38A8828019A41F5700EAD582 /* EnsoDocumentProviderFileProvider.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = EnsoDocumentProviderFileProvider.entitlements; sourceTree = "<group>"; };
+		38A8828119A41F5700EAD582 /* FileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProvider.swift; sourceTree = "<group>"; };
+		38A8829719A41F9500EAD582 /* EnsoPhotoEditingExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EnsoPhotoEditingExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		38A8829919A41F9500EAD582 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		38A8829B19A41F9500EAD582 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		38A8829F19A41F9500EAD582 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38A882A019A41F9500EAD582 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
+		38A882A219A41F9500EAD582 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		38CBF018199A7DB1002652C4 /* Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle.png; sourceTree = "<group>"; };
 		38CBF019199A7DB1002652C4 /* Polygon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Polygon.png; sourceTree = "<group>"; };
 		38CBF01A199A7DB1002652C4 /* Square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Square.png; sourceTree = "<group>"; };
@@ -86,6 +173,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		38A8825719A41F3500EAD582 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38A8826C19A41F5700EAD582 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38A8829419A41F9500EAD582 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38A8829A19A41F9500EAD582 /* PhotosUI.framework in Frameworks */,
+				38A8829C19A41F9500EAD582 /* Photos.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -104,13 +214,6 @@
 				3839A7E4199D71A0006EFA7D /* NetworkController.swift */,
 			);
 			name = "Framework Controllers";
-			sourceTree = "<group>";
-		};
-		38768EF419A17E280020FBF2 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Extensions;
 			sourceTree = "<group>";
 		};
 		3877A46F199E684400E53963 /* Pinterest.embeddedframework */ = {
@@ -135,6 +238,11 @@
 			children = (
 				388BE3A019996B9900437E8F /* Enso */,
 				388BE3B319996B9900437E8F /* EnsoTests */,
+				38A8825B19A41F3500EAD582 /* EnsoShareExtension */,
+				38A8827019A41F5700EAD582 /* EnsoDocumentProvider */,
+				38A8827D19A41F5700EAD582 /* EnsoDocumentProviderFileProvider */,
+				38A8829D19A41F9500EAD582 /* EnsoPhotoEditingExtension */,
+				38A8829819A41F9500EAD582 /* Frameworks */,
 				388BE39F19996B9900437E8F /* Products */,
 				3877A46F199E684400E53963 /* Pinterest.embeddedframework */,
 			);
@@ -145,6 +253,9 @@
 			children = (
 				388BE39E19996B9900437E8F /* Enso.app */,
 				388BE3B019996B9900437E8F /* EnsoTests.xctest */,
+				38A8825A19A41F3500EAD582 /* EnsoShareExtension.appex */,
+				38A8826F19A41F5700EAD582 /* EnsoDocumentProvider.appex */,
+				38A8829719A41F9500EAD582 /* EnsoPhotoEditingExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -158,7 +269,6 @@
 				388BE3C119996CCA00437E8F /* Model */,
 				388BE3C019996CC400437E8F /* Controller */,
 				388BE3C219996CD900437E8F /* View */,
-				38768EF419A17E280020FBF2 /* Extensions */,
 				388BE3AA19996B9900437E8F /* Images.xcassets */,
 				38CBF017199A7DB1002652C4 /* Stock icons */,
 				388BE3A119996B9900437E8F /* Supporting Files */,
@@ -222,6 +332,88 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		38A8825B19A41F3500EAD582 /* EnsoShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				38A8825E19A41F3500EAD582 /* ShareViewController.swift */,
+				38A8826019A41F3500EAD582 /* MainInterface.storyboard */,
+				38A8825C19A41F3500EAD582 /* Supporting Files */,
+			);
+			path = EnsoShareExtension;
+			sourceTree = "<group>";
+		};
+		38A8825C19A41F3500EAD582 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				38A8825D19A41F3500EAD582 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		38A8827019A41F5700EAD582 /* EnsoDocumentProvider */ = {
+			isa = PBXGroup;
+			children = (
+				38A8827419A41F5700EAD582 /* DocumentPickerViewController.swift */,
+				38A8827619A41F5700EAD582 /* MainInterface.storyboard */,
+				38A8827119A41F5700EAD582 /* Supporting Files */,
+			);
+			path = EnsoDocumentProvider;
+			sourceTree = "<group>";
+		};
+		38A8827119A41F5700EAD582 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				38A8827219A41F5700EAD582 /* Info.plist */,
+				38A8827319A41F5700EAD582 /* EnsoDocumentProvider.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		38A8827D19A41F5700EAD582 /* EnsoDocumentProviderFileProvider */ = {
+			isa = PBXGroup;
+			children = (
+				38A8828119A41F5700EAD582 /* FileProvider.swift */,
+				38A8827E19A41F5700EAD582 /* Supporting Files */,
+			);
+			path = EnsoDocumentProviderFileProvider;
+			sourceTree = "<group>";
+		};
+		38A8827E19A41F5700EAD582 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				38A8827F19A41F5700EAD582 /* Info.plist */,
+				38A8828019A41F5700EAD582 /* EnsoDocumentProviderFileProvider.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		38A8829819A41F9500EAD582 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				38A8829919A41F9500EAD582 /* PhotosUI.framework */,
+				38A8829B19A41F9500EAD582 /* Photos.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		38A8829D19A41F9500EAD582 /* EnsoPhotoEditingExtension */ = {
+			isa = PBXGroup;
+			children = (
+				38A882A019A41F9500EAD582 /* PhotoEditingViewController.swift */,
+				38A882A219A41F9500EAD582 /* MainInterface.storyboard */,
+				38A8829E19A41F9500EAD582 /* Supporting Files */,
+			);
+			path = EnsoPhotoEditingExtension;
+			sourceTree = "<group>";
+		};
+		38A8829E19A41F9500EAD582 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				38A8829F19A41F9500EAD582 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		38CBF017199A7DB1002652C4 /* Stock icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,10 +436,17 @@
 				388BE39A19996B9900437E8F /* Sources */,
 				388BE39B19996B9900437E8F /* Frameworks */,
 				388BE39C19996B9900437E8F /* Resources */,
+				38A8826A19A41F3500EAD582 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				38A8826319A41F3500EAD582 /* PBXTargetDependency */,
+				38A8826619A41F3500EAD582 /* PBXTargetDependency */,
+				38A8828919A41F5700EAD582 /* PBXTargetDependency */,
+				38A8828C19A41F5700EAD582 /* PBXTargetDependency */,
+				38A882A519A41F9500EAD582 /* PBXTargetDependency */,
+				38A882A819A41F9500EAD582 /* PBXTargetDependency */,
 			);
 			name = Enso;
 			productName = Enso;
@@ -272,6 +471,57 @@
 			productReference = 388BE3B019996B9900437E8F /* EnsoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		38A8825919A41F3500EAD582 /* EnsoShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 38A8826919A41F3500EAD582 /* Build configuration list for PBXNativeTarget "EnsoShareExtension" */;
+			buildPhases = (
+				38A8825619A41F3500EAD582 /* Sources */,
+				38A8825719A41F3500EAD582 /* Frameworks */,
+				38A8825819A41F3500EAD582 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EnsoShareExtension;
+			productName = EnsoShareExtension;
+			productReference = 38A8825A19A41F3500EAD582 /* EnsoShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		38A8826E19A41F5700EAD582 /* EnsoDocumentProvider */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 38A8829019A41F5700EAD582 /* Build configuration list for PBXNativeTarget "EnsoDocumentProvider" */;
+			buildPhases = (
+				38A8826B19A41F5700EAD582 /* Sources */,
+				38A8826C19A41F5700EAD582 /* Frameworks */,
+				38A8826D19A41F5700EAD582 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EnsoDocumentProvider;
+			productName = EnsoDocumentProvider;
+			productReference = 38A8826F19A41F5700EAD582 /* EnsoDocumentProvider.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		38A8829619A41F9500EAD582 /* EnsoPhotoEditingExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 38A882A919A41F9500EAD582 /* Build configuration list for PBXNativeTarget "EnsoPhotoEditingExtension" */;
+			buildPhases = (
+				38A8829319A41F9500EAD582 /* Sources */,
+				38A8829419A41F9500EAD582 /* Frameworks */,
+				38A8829519A41F9500EAD582 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EnsoPhotoEditingExtension;
+			productName = EnsoPhotoEditingExtension;
+			productReference = 38A8829719A41F9500EAD582 /* EnsoPhotoEditingExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -287,6 +537,15 @@
 					388BE3AF19996B9900437E8F = {
 						CreatedOnToolsVersion = 6.0;
 						TestTargetID = 388BE39D19996B9900437E8F;
+					};
+					38A8825919A41F3500EAD582 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					38A8826E19A41F5700EAD582 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					38A8829619A41F9500EAD582 = {
+						CreatedOnToolsVersion = 6.0;
 					};
 				};
 			};
@@ -305,6 +564,9 @@
 			targets = (
 				388BE39D19996B9900437E8F /* Enso */,
 				388BE3AF19996B9900437E8F /* EnsoTests */,
+				38A8825919A41F3500EAD582 /* EnsoShareExtension */,
+				38A8829619A41F9500EAD582 /* EnsoPhotoEditingExtension */,
+				38A8826E19A41F5700EAD582 /* EnsoDocumentProvider */,
 			);
 		};
 /* End PBXProject section */
@@ -329,6 +591,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38A8825819A41F3500EAD582 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38A8826119A41F3500EAD582 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38A8826D19A41F5700EAD582 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38A8827719A41F5700EAD582 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38A8829519A41F9500EAD582 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38A882A319A41F9500EAD582 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +647,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		38A8825619A41F3500EAD582 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38A8825F19A41F3500EAD582 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38A8826B19A41F5700EAD582 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38A8827519A41F5700EAD582 /* DocumentPickerViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38A8829319A41F9500EAD582 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38A882A119A41F9500EAD582 /* PhotoEditingViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -368,6 +678,36 @@
 			isa = PBXTargetDependency;
 			target = 388BE39D19996B9900437E8F /* Enso */;
 			targetProxy = 388BE3B119996B9900437E8F /* PBXContainerItemProxy */;
+		};
+		38A8826319A41F3500EAD582 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 38A8825919A41F3500EAD582 /* EnsoShareExtension */;
+			targetProxy = 38A8826219A41F3500EAD582 /* PBXContainerItemProxy */;
+		};
+		38A8826619A41F3500EAD582 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 38A8825919A41F3500EAD582 /* EnsoShareExtension */;
+			targetProxy = 38A8826519A41F3500EAD582 /* PBXContainerItemProxy */;
+		};
+		38A8828919A41F5700EAD582 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 38A8826E19A41F5700EAD582 /* EnsoDocumentProvider */;
+			targetProxy = 38A8828819A41F5700EAD582 /* PBXContainerItemProxy */;
+		};
+		38A8828C19A41F5700EAD582 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 38A8826E19A41F5700EAD582 /* EnsoDocumentProvider */;
+			targetProxy = 38A8828B19A41F5700EAD582 /* PBXContainerItemProxy */;
+		};
+		38A882A519A41F9500EAD582 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 38A8829619A41F9500EAD582 /* EnsoPhotoEditingExtension */;
+			targetProxy = 38A882A419A41F9500EAD582 /* PBXContainerItemProxy */;
+		};
+		38A882A819A41F9500EAD582 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 38A8829619A41F9500EAD582 /* EnsoPhotoEditingExtension */;
+			targetProxy = 38A882A719A41F9500EAD582 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -531,6 +871,80 @@
 			};
 			name = Release;
 		};
+		38A8826719A41F3500EAD582 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = EnsoShareExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		38A8826819A41F3500EAD582 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = EnsoShareExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		38A8829119A41F5700EAD582 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = EnsoDocumentProvider/EnsoDocumentProvider.entitlements;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = EnsoDocumentProvider/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		38A8829219A41F5700EAD582 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = EnsoDocumentProvider/EnsoDocumentProvider.entitlements;
+				INFOPLIST_FILE = EnsoDocumentProvider/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		38A882AA19A41F9500EAD582 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = EnsoPhotoEditingExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		38A882AB19A41F9500EAD582 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = EnsoPhotoEditingExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -560,6 +974,30 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		38A8826919A41F3500EAD582 /* Build configuration list for PBXNativeTarget "EnsoShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38A8826719A41F3500EAD582 /* Debug */,
+				38A8826819A41F3500EAD582 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		38A8829019A41F5700EAD582 /* Build configuration list for PBXNativeTarget "EnsoDocumentProvider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38A8829119A41F5700EAD582 /* Debug */,
+				38A8829219A41F5700EAD582 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		38A882A919A41F9500EAD582 /* Build configuration list for PBXNativeTarget "EnsoPhotoEditingExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38A882AA19A41F9500EAD582 /* Debug */,
+				38A882AB19A41F9500EAD582 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

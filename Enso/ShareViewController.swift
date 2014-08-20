@@ -12,11 +12,12 @@ import Social
 class ShareViewController: UIViewController {
 	
 	var networkController = NetworkController()
+	var pinterest = Pinterest()
+	var interactionController = UIDocumentInteractionController()
 	var haiku : Haiku?
 
 	
-//MARK:
-//MARK: IBAction
+//MARK: - IBAction
 	@IBAction func twitterButton(sender: AnyObject) {
 		
 		NSNotificationCenter.defaultCenter().postNotificationName("ShareRequest", object: nil)
@@ -98,16 +99,22 @@ class ShareViewController: UIViewController {
 		println("Need to implement")
 //		if SLComposeViewController.isAvailableForServiceType()
 	}
+	
 	func pinIt(sender: AnyObject! ) {
-		//		pinterest
+//		pinterest.createPinWithImageURL(<#imageURL: NSURL!#>, sourceURL: <#NSURL!#>, description: <#String!#>)
 	}
 	
-//MARK:
-//MARK: View methods
+//MARK: - View methods
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.view.backgroundColor = UIColor(hue: 240 / 360, saturation: 0.5, brightness: 1, alpha: 0.2)
 		//println("Preference Loaded!")
+		
+		//Initialize pinterest button.
+		var pinterest = Pinterest.pinItButton()
+		pinterest.addTarget(self, action: "pinIt:", forControlEvents: UIControlEvents.TouchUpInside)
+		self.view.addSubview(pinterest)
+		
 
     }
 	override func viewWillAppear(animated: Bool) {
@@ -128,8 +135,7 @@ class ShareViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 	
-//MARK:
-//MARK: Target-Action
+//MARK: - Target-Action
 	func receiveHaiku(sender: AnyObject! ) {
 		//println("receiveHaikuFired")
 		//println("receiveHaiku object: \(sender)")

@@ -27,8 +27,7 @@ class PhotosFrameworkController {
 //	var photoFilter : CIFilter?
 
 	
-//MARK:
-//MARK: Init
+//MARK: - Init
 	init(){
 		self.imageFetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: nil)
 		self.cacheFilters()
@@ -38,8 +37,7 @@ class PhotosFrameworkController {
 		NSNotificationCenter.defaultCenter().removeObserver(self, name: "PHAssetRequest", object: nil)
 	}
 	
-//MARK:
-//MARK: PHAsset Fetch requests
+//MARK: - PHAsset Fetch requests
 	func requestPHAsset(frameWidth : CGFloat, frameHeight : CGFloat) {
 		self.photoManager.requestImageForAsset(asset, targetSize: CGSize(width: frameWidth, height: frameHeight), contentMode: PHImageContentMode.AspectFill, options: nil) {
 			(image: UIImage!, [NSObject : AnyObject]!) -> Void in
@@ -115,7 +113,7 @@ class PhotosFrameworkController {
 		
 	}
 	
-//MARK: PHAuthorization
+//MARK: - PHAuthorization
 	func checkAuthentication(completionHandler: (PHAuthorizationStatus) -> Void) -> Void {
 		switch PHPhotoLibrary.authorizationStatus() {
 		case .NotDetermined:
@@ -128,8 +126,7 @@ class PhotosFrameworkController {
 		}
 	}
 	
-//MARK:
-//MARK: Apply Filter
+//MARK: - Apply Filter
 	func cacheFilters() {
 		
 	}
@@ -200,8 +197,7 @@ class PhotosFrameworkController {
 		return CIFilter()
 	}
 	
-//MARK:
-//MARK: Target-Action
+//MARK: - Target-Action
 	func assetSelected(sender: AnyObject!) {
 		println("Observer received!")
 		if let notification = sender as? NSNotification {
