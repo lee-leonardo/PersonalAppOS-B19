@@ -112,6 +112,8 @@
 /* Begin PBXFileReference section */
 		3818C14D199D7CFB00CC75A1 /* PhotoSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectionViewController.swift; sourceTree = "<group>"; };
 		3839A7E4199D71A0006EFA7D /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		386D28F319A509EF006D1BB7 /* EnsoShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = EnsoShareExtension.entitlements; sourceTree = "<group>"; };
+		386D28F419A513E5006D1BB7 /* Enso.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Enso.entitlements; sourceTree = "<group>"; };
 		38768EF719A1A6560020FBF2 /* PhotoLibraryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryCell.swift; sourceTree = "<group>"; };
 		3877A470199E684400E53963 /* Pinterest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pinterest.framework; sourceTree = "<group>"; };
 		3877A472199E684400E53963 /* PinterestSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PinterestSDKResources.bundle; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 		388BE3A019996B9900437E8F /* Enso */ = {
 			isa = PBXGroup;
 			children = (
+				386D28F419A513E5006D1BB7 /* Enso.entitlements */,
 				388BE3A319996B9900437E8F /* AppDelegate.swift */,
 				388BE3A719996B9900437E8F /* Main.storyboard */,
 				3877A475199E68B400E53963 /* Enso-Bridging-Header.h */,
@@ -335,6 +338,7 @@
 		38A8825B19A41F3500EAD582 /* EnsoShareExtension */ = {
 			isa = PBXGroup;
 			children = (
+				386D28F319A509EF006D1BB7 /* EnsoShareExtension.entitlements */,
 				38A8825E19A41F3500EAD582 /* ShareViewController.swift */,
 				38A8826019A41F3500EAD582 /* MainInterface.storyboard */,
 				38A8825C19A41F3500EAD582 /* Supporting Files */,
@@ -533,6 +537,12 @@
 				TargetAttributes = {
 					388BE39D19996B9900437E8F = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = KT656SWTSZ;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					388BE3AF19996B9900437E8F = {
 						CreatedOnToolsVersion = 6.0;
@@ -540,9 +550,16 @@
 					};
 					38A8825919A41F3500EAD582 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = KT656SWTSZ;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					38A8826E19A41F5700EAD582 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = KT656SWTSZ;
 					};
 					38A8829619A41F9500EAD582 = {
 						CreatedOnToolsVersion = 6.0;
@@ -808,6 +825,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Enso/Enso.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pinterest.embeddedframework",
@@ -815,6 +835,7 @@
 				INFOPLIST_FILE = Enso/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Enso/Enso-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -826,6 +847,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Enso/Enso.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pinterest.embeddedframework",
@@ -833,6 +857,7 @@
 				INFOPLIST_FILE = Enso/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Enso/Enso-Bridging-Header.h";
 			};
 			name = Release;
@@ -874,6 +899,9 @@
 		38A8826719A41F3500EAD582 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = EnsoShareExtension/EnsoShareExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -881,6 +909,7 @@
 				INFOPLIST_FILE = EnsoShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -888,9 +917,13 @@
 		38A8826819A41F3500EAD582 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = EnsoShareExtension/EnsoShareExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = EnsoShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -899,6 +932,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = EnsoDocumentProvider/EnsoDocumentProvider.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -906,6 +941,7 @@
 				INFOPLIST_FILE = EnsoDocumentProvider/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -914,9 +950,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = EnsoDocumentProvider/EnsoDocumentProvider.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = EnsoDocumentProvider/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -982,6 +1021,7 @@
 				38A8826819A41F3500EAD582 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		38A8829019A41F5700EAD582 /* Build configuration list for PBXNativeTarget "EnsoDocumentProvider" */ = {
 			isa = XCConfigurationList;
@@ -990,6 +1030,7 @@
 				38A8829219A41F5700EAD582 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		38A882A919A41F9500EAD582 /* Build configuration list for PBXNativeTarget "EnsoPhotoEditingExtension" */ = {
 			isa = XCConfigurationList;
@@ -998,6 +1039,7 @@
 				38A882AB19A41F9500EAD582 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

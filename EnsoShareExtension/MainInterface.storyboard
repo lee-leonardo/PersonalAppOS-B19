@@ -15,20 +15,7 @@
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="wbc-yd-nQP">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Vy-cQ-6nw">
-                                <rect key="frame" x="8" y="8" width="200" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="DTg-Ka-be0"/>
-                                    <constraint firstAttribute="height" constant="200" id="iza-0J-axf"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="9Vy-cQ-6nw" firstAttribute="top" secondItem="wbc-yd-nQP" secondAttribute="top" constant="8" id="Mef-sO-iVP"/>
-                            <constraint firstItem="9Vy-cQ-6nw" firstAttribute="leading" secondItem="wbc-yd-nQP" secondAttribute="leading" constant="8" id="vld-nB-DCE"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEy-Cv-SGf" userLabel="First Responder" sceneMemberID="firstResponder"/>

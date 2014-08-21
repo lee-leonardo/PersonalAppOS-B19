@@ -9,11 +9,21 @@
 import UIKit
 
 class DocumentPickerViewController: UIDocumentPickerExtensionViewController {
-
+	
+	var ensoDPExtensionContext : NSExtensionContext?
+	var inputItems : NSArray?
+	
+	override func loadView() {
+		self.ensoDPExtensionContext = self.extensionContext
+		self.inputItems = ensoDPExtensionContext?.inputItems
+		
+	}
+	
     @IBAction func openDocument(sender: AnyObject?) {
         let documentURL = self.documentStorageURL.URLByAppendingPathComponent("Untitled.txt")
       
         // TODO: if you do not have a corresponding file provider, you must ensure that the URL returned here is backed by a file
+		
         self.dismissGrantingAccessToURL(documentURL)
     }
 
